@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class information - California Survey Company</title>
+  <meta name="description" content="California Survey Co. Land Surveying and the Art of Surveying">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <style>
+:root {
+  --green-dark: #3b5e2b;
+  --green-mid: #5a8a3c;
+  --green-light: #8cb86b;
+  --green-pale: #e8f0e0;
+  --blue-dark: #1a3a5c;
+  --blue-bg: #d4e4f0;
+  --blue-light: #e8f0f8;
+  --text: #333;
+  --text-light: #666;
+  --white: #fff;
+  --border: #c0d0b0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green-dark: #8cb86b;
+    --green-mid: #6a9a4c;
+    --green-light: #3b5e2b;
+    --green-pale: #1a2a14;
+    --blue-dark: #a0c0e0;
+    --blue-bg: #0e1e2e;
+    --blue-light: #152535;
+    --text: #d8d8d0;
+    --text-light: #a0a098;
+    --white: #1a2418;
+    --border: #3a4a30;
+    --shadow: rgba(0,0,0,0.3);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--blue-bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--green-dark); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--green-mid); }
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 0 20px var(--shadow);
+  min-height: 100vh;
+}
+
+/* Header */
+#header {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  padding: 24px 30px;
+  border-bottom: 3px solid var(--green-light);
+}
+
+#header h1 {
+  font-size: 1.8em;
+  color: var(--white);
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+#header h1 a { color: var(--white); }
+#header h1 a:hover { text-decoration: none; opacity: 0.9; }
+
+#header .subtitle {
+  color: var(--green-pale);
+  font-size: 0.85em;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Navigation */
+#nav {
+  background: var(--green-pale);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+#nav a {
+  display: inline-block;
+  padding: 10px 16px;
+  color: var(--green-dark);
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-right: 1px solid var(--border);
+}
+
+#nav a:hover, #nav a.active {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  #nav a:hover, #nav a.active {
+    background: var(--green-mid);
+  }
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 8px 30px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.breadcrumb a { color: var(--text-light); }
+
+/* Content area */
+#content {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+#main-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-heading {
+  font-size: 1.5em;
+  color: var(--green-dark);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-pale);
+}
+
+/* Timeline sidebar */
+#timeline {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78em;
+  padding-right: 8px;
+}
+
+#timeline::-webkit-scrollbar { width: 4px; }
+#timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+#timeline h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-year {
+  margin-bottom: 12px;
+}
+
+.tl-year-label {
+  font-weight: bold;
+  color: var(--green-dark);
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  padding: 2px 0;
+}
+
+.tl-post {
+  display: block;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid var(--border);
+  color: var(--text-light);
+  line-height: 1.3;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tl-post:hover {
+  border-left-color: var(--green-mid);
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.tl-post .tl-date {
+  display: block;
+  font-size: 0.85em;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+/* Blog posts */
+.blog-post, .blog-post-summary {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-post:last-child, .blog-post-summary:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.3em;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.post-title a { color: var(--green-dark); }
+
+.post-meta {
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-meta .post-author {
+  margin-right: 16px;
+}
+
+.post-content {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin-bottom: 14px;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-image {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.post-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.post-preview {
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.read-more {
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--green-mid);
+}
+
+.post-footer {
+  margin-top: 16px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-updated {
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.post-comments {
+  color: var(--green-mid);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 2px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.pagination span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Footer */
+#footer {
+  background: var(--green-pale);
+  border-top: 1px solid var(--border);
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 0.75em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Year navigation */
+.year-nav {
+  margin-bottom: 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.year-nav a, .year-nav span {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.year-nav span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #content { flex-direction: column; }
+  #timeline {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  #header { padding: 18px 16px; }
+  #header h1 { font-size: 1.4em; }
+  #nav { padding: 0 8px; }
+  #nav a { padding: 8px 10px; font-size: 0.8em; }
+  #content { padding: 20px 16px; }
+  .page-heading { font-size: 1.2em; }
+  .post-title { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1><a href="index.html">California Survey Company</a></h1>
+      <div class="subtitle">Land Surveying and the Art of Surveying</div>
+    </div>
+    <div id="nav">
+      <a href="index.html">Home</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+<a href="#">The Community</a>
+<a href="#">Equipment &amp; Methodology</a>
+<a href="#">Links</a>
+<a href="index.html" class="active">Surveyor's Blog</a>
+
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="index.html">Surveyor's Blog</a> &rsaquo; Class information</div>
+    <div id="content">
+      <div id="main-col">
+        <a href="index.html" class="back-link">&larr; Back to all posts</a>
+<article class="blog-post" id="class-information">
+  <div class="post-header">
+    <h2 class="post-title">Class information</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Sunday, 21 February 2010 21:00</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>The Surveying Course for the Real Estate Community as presented by Jon Hose and Stephen Hein
+
+Course Outline 2/17/10
+
+Jon Research AP Maps Corner Search Record of Survey Parcel Map Subdivision Map Deed descriptions Sample Lot Line Adjustment
+
+Stephen Enhanced corner search Encroachements Easements Land Division Zoning &amp; Land Use Litigation Site Plans Value &amp; Permaculture
+
+Q&amp;A specifics.
+
+I&#x27;m posting my notes for the seconds section
+
+ENHANCED CORNER SEARCH:
+
+On smaller properties the results of a corner search are readily evident.</p>
+<p>However, on lots with complex or spread-out development, the recovery of property corners is often only the first step in discovering encroachment issues that may have significant effect on enjoyment and use.</p>
+<p>In the old days we would conduct corner searches with a compass and tape and often tie plastic flagging along the approximate property line as we walked it.</p>
+<p>Despite disclaimers, this led to some fenceline disputes and litigation, and I am no longer willing to set “approximate” corners or lines.</p>
+<p>This means that the visual result on the ground of a corner search are only property corners located (found monuments), and it is important to evaluate the relationships of the found corners with structures, roads, fences and any other features.</p>
+<p>If there is a possibility of encroachment or conflicts in use these issues may need to be resolved.
+
+We have had several clients recently requesting corner searches that included additional mapping to locate features of interest, suspected fence and driveway encroachments or the location of structures in relation to property lines.</p>
+<p>Most of the corner searches are now accomplished with GPS, and it is relatively simple to locate features of interest with a good degree of accuracy.
+
+The example map identifies numerous boundary issues that are of interest to the landowner or manager.</p>
+<p>The area shown consists of three parcels, (Parcel 1,2 and 3) which were created by parcel map in 1974.</p>
+<p>Nevada County condemned portions shown in Bitney Springs Road in 1979 and the predecessor in title by quiet title acquired an additional parcel, an area of land between the southerly high water and the centerline of Deer Creek, in 1975.</p>
+<p>This last parcel is entirely within the jurisdictional high water of Deer Creek, and hence, unbuildable.
+
+Questions raised by the sketch map are:
+
+Would it be possible to reconfigure the lots by Lot line adjustment to result in four usable (buildable) parcels?
+
+What about the driveway encroachment to the neighbor parcel? (West side)
+
+What about driveway, access and structure conflicts between Parcels 1 and 2?
+
+It is possible that the sketch map will not provide enough information to resolve boundary conflicts, but it will indicate the possibilities.
+
+EASEMENTS:
+
+Easements are unregulated by the public agency, and are a valuable tool for conveying numerous rights short of fee title.</p>
+<p>They are used for access, utilities, limiting development, ensuring access to views and solar exposure as well as pretty much any other uses you can create language for.</p>
+<p>Easements can help solve building setback encroachments but they are not suitable for building permanent structures or fences that prevent access to the fee holder.
+
+To create an easement, you need the cooperation of the vested interest holder.</p>
+<p>This party then signs a deed specifically conveying certain rights and describing the real property that will be affected.</p>
+<p>Access easements do not imply the right to use the described area for other than ingress and egress.</p>
+<p>For example, parking and utility rights should be specifically included in the easement documentation if they are to be a part of an easement.
+
+Appurtenant easements convey rights to be attached to a particular piece of property.</p>
+<p>Unless otherwise stated, they adhere to the heirs and assigns in interest in perpetuity and on recordation, will show as such on subsequent transfers.
+
+Easements in gross are to a specific entity (frequently a utility company or public agency) and generally convey rights to the public or for the public good.
+
+Tentative Parcel Map LAND DIVISION: Land division in California is governed by the Subdivision Map Act and subject to the regulation of the County or City in which the division occurs.</p>
+<p>Regulatory approval is subject to conforming to restrictive ordinances enacted to ensure compliance with fire safety codes, cultural preservation, planning and zoning restrictions, transportation requirements and environmental quality and health standards.</p>
+<p>Some of the important regulations to be aware of</p>
+<p>are:
+
+Parcel Zoning Dead end road, and road width and slope requirements (vary with zoning) Important farmlands Mineral extraction zones Environmentally sensitive areas Wetland – riparian Oak woodland Slopes in excess of 30% T&amp;E or habitat Culturally significant sites. Heritage trees Visually important ridgelines Building site and sewage disposal Proof of water Fire water supply Adequate legal access Secondary access
+
+Land use in the County is governed by the Land use and development code Chapt. 2 The code identifies numerous uses including. Agriculture, animal keeping, Bed and Breakfasts, Campgrounds, Churches, Communication towers, Adult and Child Day Care facilities, Employee Housing, Home businesses, Public Utilities, Recreational vehicle use and storage, Residential Housing, Commercial uses, Subsurface and above ground mining, Wineries, and Dog obedience training facilities.
+
+The ordinance has further designated all county parcels and zoned them for allowable uses.</p>
+<p>Although it is theoretically possible to obtain a zoning change and permit for a project or use that is counter to current zoning.</p>
+<p>It requires dedication, resource and persistence beyond the norm.
+
+LITIGATION
+
+From my perspective litigation is a last resort.</p>
+<p>The associated fees and costs frequently exceed the value of the damages sought.</p>
+<p>However, disputes are common, and the courts are one avenue of redress.</p>
+<p>I’ve given testimony on several occasions and I’ll go ahead and discuss a couple of cases that involved real estate transactions. I simply want to bring these up to illustrate that even with all good intentions, these things can come up and if nothing else, they are educational. Last week a San Francisco attorney called requesting assistance for a case in southern Nevada County.</p>
+<p>He is representing a real estate agent who is the defendant.</p>
+<p>Plaintiff purchased a property on Streeter Rd.</p>
+<p>Part of the purchase included Architecture and Engineering plans which had been completed for a second dwelling unit.</p>
+<p>However when the client applied for a building permit he was informed by the Nevada County Planning Dept. that his project was beyond the dead-end road limit for development, and would be denied.</p>
+<p>He is now seeking damages from the real-estate agent, claiming that the dead end limit was in effect at the time of sale and somebody should have told him about it.</p>
+<p>The attorney was seeking an opinion from a project manager, that at the time of the A&amp;E plans, County was granting petitions to exceptions to road standards and specifically to the dead-end road limit.
+
+In another case, my client, Andrew Guernsey, owned a Placer County property that was served by a deeded access easement across a neighboring parcel.</p>
+<p>When the neighbor sold, her agent asked Guernsey to sign a rather complex document, which he said cleared up inconsistencies regarding the easement.</p>
+<p>What the instrument actually accomplished, was to sunset the easement after five years and quitclaim all easement rights away from Guernsey.</p>
+<p>After five years had passed, the new owner decided to implement the quit-claim and told Guernsey to stop using his driveway.</p>
+<p>As is usual, the case dragged on for several years and cost thousands of dollars but Guernsey was eventually able to use his driveway again.
+
+SITE PLANS &amp; PERMACULTURE
+
+Nevada County requires a comprehensive site plan for septic system installation, construction or remodeling.</p>
+<p>These plans typically show the location and extent of the existing property.</p>
+<p>Setbacks, easements, slope, the location of any ditches or other water courses and the 100 year flood if applicable as well as any existing structures or improvements.</p>
+<p>They need to show the footprint of the proposed structure and any grading including volumes of cut or fill and proposed erosion control or drainage measures.</p>
+<p>It also needs to show the location of wells, or water, sewage disposal, power and gas or propane delivery systems, including trenching.
+
+Engineering is required for:
+
+Plans requiring more than 500 cubic yards of disturbance Grading involves an access road serving three or more potential residences fill supporting structures altering an existing drainage course
+
+All drainage structures (culverts, bridges, sediment control)
+
+Because we have been preparing these site plans already, I have gotten excited about the addition of Permacultural concepts.</p>
+<p>Permaculture as a methodology was founded in the 1970 by the Australians, Bill Mollison and David Homgren, and it is an elegant formatting of concepts that are integral to long-term health of the living systems that ultimately form any topographic entity.
+
+Natural systems are inherently the most sustainable, but in many places these have already been disrupted and by better understanding the purpose and functioning of the vital circulation of Earth’s currents we can emulate and adopt these.
+
+The adoption of permacultural principles means taking a longer-term perspective to any development project.</p>
+<p>In addition to the immediate project, new construction or remodel, or whatever, some time is spent in understanding the existing site features and any design is an attempt to strengthen and integrate existing communities.</p>
+<p>Design professionals have tended to impose their ideas on a pliable landscape, but Permaculturists begin with the site itself, the natural forces already at work and the zones of activity that govern the existing and anticipated life systems.
+
+Specifically this can mean numerous measures, including creating on-site water retention, incorporating living elements into site design, food and flower gardens, and minimizing energy use as well as building soil and reducing erosion.</p>
+<p>The identification of site specific zones and communities will suggest the planning measures for each area.</p>
+<p>Ultimately, the intent of a Permaculture design is to support a regenerative and joyful living culture.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Sunday, 21 February 2010 22:19</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article><div style="display:flex;justify-content:space-between;margin-top:24px;font-size:0.85em;font-family:Helvetica Neue,Arial,sans-serif;"><a href="jon-being-useful.html">&larr; Jon being useful</a><a href="sticking-around.html">sticking around &rarr;</a></div>
+      </div>
+      <aside id="timeline"><h3>Timeline</h3>
+<div class="tl-year">
+<div class="tl-year-label">2011</div>
+<a class="tl-post" href="#driving-with-john"><span class="tl-date">Mar 19</span>Driving with John</a>
+<a class="tl-post" href="#john-o"><span class="tl-date">Mar 09</span>john O</a>
+<a class="tl-post" href="#who-owns-public-resources"><span class="tl-date">Jan 21</span>Who owns public resources?</a>
+<a class="tl-post" href="#a-bird-in-the-hand"><span class="tl-date">Jan 20</span>A bird in the hand</a>
+<a class="tl-post" href="#the-tyranny-of-fear"><span class="tl-date">Jan 15</span>The tyranny of fear</a>
+<a class="tl-post" href="#nevada-county-going-backwards"><span class="tl-date">Jan 09</span>Nevada County going backwa...</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2010</div>
+<a class="tl-post" href="#every-year-something-dies"><span class="tl-date">Oct 24</span>Every year something dies</a>
+<a class="tl-post" href="#observation-and-design"><span class="tl-date">Jun 19</span>observation and design</a>
+<a class="tl-post" href="#permaculture-booth"><span class="tl-date">May 31</span>Permaculture Booth</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 11</span>Another bee</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 08</span>Another Bee</a>
+<a class="tl-post" href="#afluence-and-ecological-ignorance"><span class="tl-date">Apr 24</span>Afluence and ecological ig...</a>
+<a class="tl-post" href="#season-s-dance"><span class="tl-date">Apr 21</span>Season&#x27;s dance</a>
+<a class="tl-post" href="#old-nevada-county-map-from-the-interwebs"><span class="tl-date">Apr 11</span>Old Nevada County Map from...</a>
+<a class="tl-post" href="#change"><span class="tl-date">Apr 10</span>Change</a>
+<a class="tl-post" href="#permaculture-certification"><span class="tl-date">Apr 06</span>Permaculture Certification</a>
+<a class="tl-post" href="#sticking-around"><span class="tl-date">Mar 09</span>sticking around</a>
+<a class="tl-post" href="#class-information"><span class="tl-date">Feb 21</span>Class information</a>
+<a class="tl-post" href="#jon-being-useful"><span class="tl-date">Jan 28</span>Jon being useful</a>
+<a class="tl-post" href="#happy-farmers"><span class="tl-date">Jan 27</span>Happy farmers</a>
+<a class="tl-post" href="#permaculture-site-plan"><span class="tl-date">Jan 26</span>Permaculture site plan</a>
+<a class="tl-post" href="#a-permanent-economy"><span class="tl-date">Jan 17</span>A permanent economy</a>
+<a class="tl-post" href="#survey-presentation"><span class="tl-date">Jan 13</span>Survey Presentation</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2009</div>
+<a class="tl-post" href="#california-map"><span class="tl-date">Dec 09</span>California Map</a>
+<a class="tl-post" href="#planning-and-sustainability"><span class="tl-date">Dec 04</span>planning and sustainability</a>
+<a class="tl-post" href="#mining-claims"><span class="tl-date">Dec 02</span>Mining Claims</a>
+<a class="tl-post" href="#bear-story"><span class="tl-date">Dec 01</span>Bear Story</a>
+<a class="tl-post" href="#odds-and-ends"><span class="tl-date">Nov 30</span>Odds and ends</a>
+<a class="tl-post" href="#fema-elevation-certificate"><span class="tl-date">Nov 11</span>FEMA Elevation Certificate</a>
+<a class="tl-post" href="#legacy"><span class="tl-date">Nov 06</span>Legacy</a>
+<a class="tl-post" href="#about-time"><span class="tl-date">Oct 02</span>About time</a>
+<a class="tl-post" href="#rain"><span class="tl-date">Jun 15</span>Rain</a>
+<a class="tl-post" href="#permaculture-2--collect-and-store-energy"><span class="tl-date">Mar 22</span>Permaculture 2: Collect an...</a>
+<a class="tl-post" href="#geomatics--feng-shui-and-permaculture-design"><span class="tl-date">Mar 19</span>Geomatics, Feng Shui and P...</a>
+<a class="tl-post" href="#practical-rtk-surveying"><span class="tl-date">Mar 13</span>Practical RTK Surveying</a>
+<a class="tl-post" href="#green-development"><span class="tl-date">Mar 01</span>green development</a>
+<a class="tl-post" href="#evidence"><span class="tl-date">Feb 23</span>Evidence</a>
+<a class="tl-post" href="#value"><span class="tl-date">Feb 16</span>Value</a>
+<a class="tl-post" href="#my-father"><span class="tl-date">Feb 06</span>My Father</a>
+<a class="tl-post" href="#back-at-it"><span class="tl-date">Jan 16</span>Back at it</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2008</div>
+<a class="tl-post" href="#fire-dancer"><span class="tl-date">Dec 28</span>Fire dancer</a>
+<a class="tl-post" href="#benchmark--books"><span class="tl-date">Dec 19</span>Benchmark &quot;Books&quot;</a>
+<a class="tl-post" href="#lay-off"><span class="tl-date">Dec 18</span>Lay-off</a>
+<a class="tl-post" href="#latitude"><span class="tl-date">Dec 13</span>Latitude</a>
+<a class="tl-post" href="#it-s-cool-to-be-green"><span class="tl-date">Dec 05</span>It&#x27;s Cool to be Green</a>
+<a class="tl-post" href="#blog-8"><span class="tl-date">Dec 04</span>Blog 8</a>
+<a class="tl-post" href="#blog-7"><span class="tl-date">Dec 03</span>Blog 7</a>
+<a class="tl-post" href="#blog-6"><span class="tl-date">Nov 27</span>Blog 6</a>
+<a class="tl-post" href="#entry-5"><span class="tl-date">Nov 27</span>Entry 5</a>
+<a class="tl-post" href="#entry-4"><span class="tl-date">Nov 27</span>Entry 4</a>
+<a class="tl-post" href="#entry-3"><span class="tl-date">Nov 27</span>Entry 3</a>
+<a class="tl-post" href="#entry-2"><span class="tl-date">Nov 27</span>Entry 2</a>
+<a class="tl-post" href="#entry-1"><span class="tl-date">Nov 12</span>Entry 1</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2004</div>
+<a class="tl-post" href="#who-we-were"><span class="tl-date">Jul 07</span>Who we were</a>
+</div>
+</aside>
+    </div>
+    <div id="footer">
+      Copyright &copy; 2013 California Survey Company. All Rights Reserved.<br>
+      Originally powered by Joomla! &mdash; Recreated with care.
+    </div>
+  </div>
+</body>
+</html>

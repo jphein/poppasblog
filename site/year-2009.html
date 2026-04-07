@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surveyor's Blog - 2009 - California Survey Company</title>
+  <meta name="description" content="California Survey Co. Land Surveying and the Art of Surveying">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <style>
+:root {
+  --green-dark: #3b5e2b;
+  --green-mid: #5a8a3c;
+  --green-light: #8cb86b;
+  --green-pale: #e8f0e0;
+  --blue-dark: #1a3a5c;
+  --blue-bg: #d4e4f0;
+  --blue-light: #e8f0f8;
+  --text: #333;
+  --text-light: #666;
+  --white: #fff;
+  --border: #c0d0b0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green-dark: #8cb86b;
+    --green-mid: #6a9a4c;
+    --green-light: #3b5e2b;
+    --green-pale: #1a2a14;
+    --blue-dark: #a0c0e0;
+    --blue-bg: #0e1e2e;
+    --blue-light: #152535;
+    --text: #d8d8d0;
+    --text-light: #a0a098;
+    --white: #1a2418;
+    --border: #3a4a30;
+    --shadow: rgba(0,0,0,0.3);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--blue-bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--green-dark); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--green-mid); }
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 0 20px var(--shadow);
+  min-height: 100vh;
+}
+
+/* Header */
+#header {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  padding: 24px 30px;
+  border-bottom: 3px solid var(--green-light);
+}
+
+#header h1 {
+  font-size: 1.8em;
+  color: var(--white);
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+#header h1 a { color: var(--white); }
+#header h1 a:hover { text-decoration: none; opacity: 0.9; }
+
+#header .subtitle {
+  color: var(--green-pale);
+  font-size: 0.85em;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Navigation */
+#nav {
+  background: var(--green-pale);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+#nav a {
+  display: inline-block;
+  padding: 10px 16px;
+  color: var(--green-dark);
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-right: 1px solid var(--border);
+}
+
+#nav a:hover, #nav a.active {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  #nav a:hover, #nav a.active {
+    background: var(--green-mid);
+  }
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 8px 30px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.breadcrumb a { color: var(--text-light); }
+
+/* Content area */
+#content {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+#main-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-heading {
+  font-size: 1.5em;
+  color: var(--green-dark);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-pale);
+}
+
+/* Timeline sidebar */
+#timeline {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78em;
+  padding-right: 8px;
+}
+
+#timeline::-webkit-scrollbar { width: 4px; }
+#timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+#timeline h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-year {
+  margin-bottom: 12px;
+}
+
+.tl-year-label {
+  font-weight: bold;
+  color: var(--green-dark);
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  padding: 2px 0;
+}
+
+.tl-post {
+  display: block;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid var(--border);
+  color: var(--text-light);
+  line-height: 1.3;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tl-post:hover {
+  border-left-color: var(--green-mid);
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.tl-post .tl-date {
+  display: block;
+  font-size: 0.85em;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+/* Blog posts */
+.blog-post, .blog-post-summary {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-post:last-child, .blog-post-summary:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.3em;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.post-title a { color: var(--green-dark); }
+
+.post-meta {
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-meta .post-author {
+  margin-right: 16px;
+}
+
+.post-content {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin-bottom: 14px;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-image {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.post-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.post-preview {
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.read-more {
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--green-mid);
+}
+
+.post-footer {
+  margin-top: 16px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-updated {
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.post-comments {
+  color: var(--green-mid);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 2px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.pagination span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Footer */
+#footer {
+  background: var(--green-pale);
+  border-top: 1px solid var(--border);
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 0.75em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Year navigation */
+.year-nav {
+  margin-bottom: 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.year-nav a, .year-nav span {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.year-nav span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #content { flex-direction: column; }
+  #timeline {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  #header { padding: 18px 16px; }
+  #header h1 { font-size: 1.4em; }
+  #nav { padding: 0 8px; }
+  #nav a { padding: 8px 10px; font-size: 0.8em; }
+  #content { padding: 20px 16px; }
+  .page-heading { font-size: 1.2em; }
+  .post-title { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1><a href="index.html">California Survey Company</a></h1>
+      <div class="subtitle">Land Surveying and the Art of Surveying</div>
+    </div>
+    <div id="nav">
+      <a href="index.html">Home</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+<a href="#">The Community</a>
+<a href="#">Equipment &amp; Methodology</a>
+<a href="#">Links</a>
+<a href="index.html" class="active">Surveyor's Blog</a>
+
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Surveyor's Blog</div>
+    <div id="content">
+      <div id="main-col">
+        <h1 class="page-heading">Surveyor's Blog &mdash; 2009</h1>
+<div class="year-nav">Filter by year: <a href="index.html">All</a> <a href="year-2011.html">2011</a> <a href="year-2010.html">2010</a> <span class="current">2009</span> <a href="year-2008.html">2008</a> <a href="year-2004.html">2004</a> </div>
+<article class="blog-post" id="california-map">
+  <div class="post-header">
+    <h2 class="post-title">California Map</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Wednesday, 09 December 2009 20:02</span>
+    </div>
+  </div>
+  <div class="post-content">
+    <div class="post-image"><img src="images/plat4.jpg" alt="" loading="lazy"></div>
+    <p>California Island</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Wednesday, 09 December 2009 20:13</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="planning-and-sustainability">
+  <div class="post-header">
+    <h2 class="post-title">planning and sustainability</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 04 December 2009 19:43</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>As far as the global war of economic ideology is concerned, capitalism seems to have the upper hand.</p>
+<p>Everywhere, absolute monarchies and state-run economies are being displaced by barely regulated and unregulated free-markets. Although this allows for unprecedented opportunity and rapid change, it also means that there are bound to be unsteady booms and cycles of development and depression as speculators raise the ante on the future and are then &quot;corrected&quot; by market forces.</p>
+<p>For capitalists, by which I mean literally, people with capital, this is the big game.</p>
+<p>The world becomes a shifting curtain of value and worth. Of course for most of the people on the planet, economic shifts have real and dire consequences.</p>
+<p>They represents jobs and food and homes.</p>
+<p>For small business people, such as myself, security is mostly a matter of how brave you feel each day.</p>
+<p>When things are busy.</p>
+<p>I am mostly thinking about management, keeping up quality and putting out fires.</p>
+<p>During the inevitable slow times I am presented with an opportunity to try new things, reorganize, re-evaluate and plan for the future. Value is a slippery figure.</p>
+<p>For a service such as ours, value is ultimately determined by what people are willing to pay or trade and what I am willing to work for.</p>
+<p>In the simple supply and demand model, if there are ten or twenty equally qualified people lined up waiting for each available job it certainly diminishes the value, and the hungrier I get the less I&#x27;m willing to accept for my labor. To help combat hunger and deal with rising food prices, people all over the country are growing vegetable gardens and raising their own food in other ways.</p>
+<p>I&#x27;m not as hungry since the chickens out back started producing lots of eggs.</p>
+<p>By itself, an egg isn&#x27;t worth very much, and I don&#x27;t expect the eggs to make much in the way of extra income, but they really taste good, and I am experiencing the unexpected benefit of the flock.</p>
+<p>The hens are sweet birds that cluck around and contribute to a sanguine</p>
+<p>atmosphere and the roosters are beautiful and protective. Fresh Eggs
+
+Perhaps an even greater benifit from the backyard chickens is the symbolic and gradual transition that they represent to me, to a permanently sustainable culture.</p>
+<p>The more I study the permaculture philosophy, the more I am in accordance with the basic principles.</p>
+<p>According to David Holgren, &quot;Permaculture principles are brief statements or slogans that can be remembered as a checklist when considering the inevitably complex options for design and evolution of ecological support systems.&quot;</p>
+<p>Permaculture rests on learning from natural and other successful systems that depend on energy stability, and on steady replenishment of food, air and water.</p>
+<p>From Holmgren again, three ethical considerations for establishing a</p>
+<p>permanent cultural system are: •</p>
+<p>Care for the earth (husband soil, forests and water) •</p>
+<p>Care for people (look after self, kin and community) •</p>
+<p>Fair share (set limits to consumption and reproduction, and redistribute surplus). Oviously if these become primary considerations for a business enterprise or a proposed family or community living space (and I think they inevitably will), we might shape a different result, and the overall effect on our economy may</p>
+<p>be changes in commerce, zoning and transport that reflect our altered motivations. local store These changes are happening all around, in people&#x27;s homes, commercially and politically.</p>
+<p>Large and small business are finding niches in recycling and local production of everything from energy to spare parts. A few years ago the local Chevrolet dealer spent five million dollars grading a serpentine hillside down the street in order to build a new showroom and repair shop.</p>
+<p>It was big and modern with colorful new cars and bright lights shining all night.</p>
+<p>Last year the dealer closed its doors and the facility stands empty.</p>
+<p>People simply aren&#x27;t buying cars they way they used to. No cars As always, change comes from within, incrementally.</p>
+<p>It is driven by econonomic necessity and environmental adaptation.</p>
+<p>Social change is imperceptible and unstoppable.</p>
+<p>When my son tells me I am making a petroleum-based decision, he is using terminology that didn&#x27;t exist fifty years ago.</p>
+<p>It represents a social paradigm that is as natural to the next generation as texting.</p>
+<p>As always, our policy-makers and established business leaders, with the wisdom and the shortcomings of experience, are failing to change the established patterns that have worked so well to put them at the top of the heap.</p>
+<p>It&#x27;s not their fault.</p>
+<p>They don&#x27;t know how to live differently.</p>
+<p>Our President can&#x27;t give us change.</p>
+<p>The Ford Motor company can&#x27;t make us change.</p>
+<p>A million people growing onions and beets and strawberries, or not flying to Bermuda, or walking to work, can make a change. Good Veggies</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Wednesday, 09 December 2009 03:58</div>
+    <div class="post-comments">Comments (2)</div>
+  </div>
+</article>
+<article class="blog-post" id="mining-claims">
+  <div class="post-header">
+    <h2 class="post-title">Mining Claims</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Wednesday, 02 December 2009 18:47</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>We are contacted from time to time for information on the establishment and location of mining claims on government land.</p>
+<p>There is still unclaimed land out there, and the mineral rights are available for industrious miners.</p>
+<p>With the the increasing value of gold, I expect to see more interest in local mining claims.</p>
+<p>This link will take you to the BLM website and provide information on the process of establishing, recording and maintaining a mineral claim.</p>
+<p>(How to Establish a mining claim) Claims are described as to location but generally not surveyed and the actual sideline location may require substantial effort. This has naturally resulted in some bitter disputes over mine ownership. One thing to note is that a mining claim is for mineral rights.</p>
+<p>It does not convey title to the underlying ground.</p>
+<p>Building a structure on an unpatented claim simply for recreation or purposes other than mining is illegal.</p>
+<p>All buildings, equipment, fences, signs, roads, any man made changes on the mining claim, must be reasonably incident to mining.</p>
+<p>To build on a gold mining claim, you must first obtain a permit from the federal agency managing the surface, for example, the USFS or BLM. In bygone years we have met up with quite a few old-timers who treated their claims like private property to the point of repelling hikers, trespassers and surveyors at shotgun point.</p>
+<p>These crusty sourdoughs, with their tar-paper shacks and rusty tractors are disappearing as the years go by, but when we discover a well defended claim with a string of rattle-snake skins tied to an old snag, or a skull and crossbones painted on a rock, we are careful.</p>
+<p>Shotguns are very convincing.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 03 December 2009 18:33</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="bear-story">
+  <div class="post-header">
+    <h2 class="post-title">Bear Story</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Tuesday, 01 December 2009 18:50</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>I don&#x27;t know where these photos came from.</p>
+<p>Jon sent them along with the caption.
+
+Isn&#x27;t it comforting to know, that when you are about to become a bear&#x27;s breakfast, your buddy is standing there taking pictures? You just put the legs away Lunch time I&#x27;ll Drive It looks like you&#x27;re low on oil the eco-friendly Ford one more go-round</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Tuesday, 01 December 2009 19:35</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="odds-and-ends">
+  <div class="post-header">
+    <h2 class="post-title">Odds and ends</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Monday, 30 November 2009 19:06</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Democracy power in numbers</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 30 November 2009 19:12</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="fema-elevation-certificate">
+  <div class="post-header">
+    <h2 class="post-title">FEMA Elevation Certificate</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Wednesday, 11 November 2009 00:04</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>It has taken me a while to comprehend the FEMA elevation certificate, but I think I have finally grasped the subtleties of this little document.</p>
+<p>Over the past 30+ years, FEMA has conducted an enormous number of flood studies across the nation, and these range in degree of accuracy and reliabilty, but they do provide a planning guide and in some cases a reasonable guess as to the likelyhood of severe flooding in many drainages.
+
+The earlier rate maps are ink and are of varying scale (frequently 400&#x27; to the inch) and they comprise numerous communities.</p>
+<p>Maps are available here: FEMA LINK. The newer Flood rate maps are superimposed on aerial photographs so that it is possible to distinguish individual buildings, bridges and other structures.</p>
+<p>In areas where FEMA has performed a detailed study it is possible to determine the location of a proposed or existing structure in relation to the &quot;Base Flood Elevation,&quot; determined by FEMA.</p>
+<p>This is the area with a 1% chance of flooding during any given season.</p>
+<p>Elevations may be derived conventionally (by locating existing benchmarks and levelling to structures) or with GPS.</p>
+<p>The relationship between the structure and the FEMA determined Base flood elevation is entered in section C of the certificate and will affect mandatory flood insurance requirements and rates.
+
+Areas where Fema has concluded that there is a flood hazard, but has not conducted detailed studies are classified as flood zones A, AO or V.</p>
+<p>Elevation certificates in these zones do not need the elevation information but still require the structure type and the relationship of the structure to the surrounding ground.</p>
+<p>If there is a local determination of the 100-year flood, or an appropriate hydraulogical study, these results may be used.</p>
+<p>Section E of the certificate describes the structure, whether it is likely to fill with water and what the hydrostatic pressures might be if the area floods.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Tuesday, 26 January 2010 19:43</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="legacy">
+  <div class="post-header">
+    <h2 class="post-title">Legacy</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 06 November 2009 23:50</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>I came to work for Al Beeson in Nevada City in 1984.</p>
+<p>Although it seems hard to believe, that has now been 25 years, and looking at the backward path of my profession, I realize that I can trace my local professional legacy at least as far into the past as my family history.</p>
+<p>The hours spent practicing our craft binds us to our teachers in a unique way and even though our equipment has changed, I carry on traditions and language that originated with the old-time surveyors.</p>
+<p>I know their handwriting and their methods, and I know that they were civil, hard-working and devoted. A.W. Beeson, California Licensed Surveyor #3224, Settled in Nevada City in 1960 and surveyed out of the office on Church st. for 36 years.</p>
+<p>He introduced me to the calm demeanor and the razor-sharp machete that you need to carry when you are marking property lines between warring parties with fierce dogs.</p>
+<p>Al was a great mentor.</p>
+<p>He allowed me a lot of freedom to make my own mistakes, but always demanded quality and documentation.</p>
+<p>He taught me the value of a good lunch. Jack Siegfried L.S. 2202, Came to Nevada City in the 1920&#x27;s.</p>
+<p>Jack was Al&#x27;s boss from 1960 until Al bought him out in 1972.</p>
+<p>Jack was still living in an apartment in back of the office when I went to work for Al.</p>
+<p>He was geologist as well as a surveyor, with a collection of minerals and black tobacco pipes.</p>
+<p>Jack was full of stories.</p>
+<p>He buried a bottle of radioactive iodine in the Photinia bushes in front of the office to see what mutations might arise.</p>
+<p>He told me abouth travelling to Mexico and India in 1905, working in the mines.</p>
+<p>When he was a student in Utah, his pony was struck by lightning. Jack was sponsored into the profession by Ed. Uren. There were at least two, and probably three Ed C. Urens because there was an Ed C. Uren that died in Auburn in 1899, This was probably the surveyor, L.S. 72, who platted the Townsite of Dutch Flat and later became the Placer County Surveyor. There was also an Ed C. Uren, R.C.E. #4167, still drawing maps at least until 1950. We have been going over for the same ground for the last 100 years. You Bet Mine
+
+Ed Uren&#x27;s Dutch Flat Mining District Map J.F. Siegfried 1949 Map - Leroy lettering and Pen and Ink R/S 1-125 You Bet Mines 1974 - Al Beeson - Hand Drawn You Bet mine property Lot line adjustment 2008- CAD</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 12 April 2010 15:56</div>
+    <div class="post-comments">Comments (1)</div>
+  </div>
+</article>
+<article class="blog-post" id="about-time">
+  <div class="post-header">
+    <h2 class="post-title">About time</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 02 October 2009 03:29</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>It&#x27;s about time I added a new entry to this site.</p>
+<p>I have had hard times headlining for too long.</p>
+<p>I was back at Jughandle farm getting married last week and got reinspired by the cross-California landscape.</p>
+<p>This is a map I drew a few years ago while I was tresspassing my way across the State from Mendocino to Tahoe.</p>
+<p>I would take a long weekend off and hike another segment of the journey.</p>
+<p>This is a beautiful place, this state.</p>
+<p>The gloriousness of October preparing us for another winter&#x27;s renewal. X-California Map 39th Parallel</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Tuesday, 20 October 2009 19:09</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="rain">
+  <div class="post-header">
+    <h2 class="post-title">Rain</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Monday, 15 June 2009 18:50</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>We&#x27;ve been out making hay for a couple of months, but June is unexpectedly slow.</p>
+<p>If it is any consolation, everyone else seems to be in the same boat.</p>
+<p>The real estate cycle, and the associated development and construction, has really run out of steam.</p>
+<p>This is likely to continue for a while.</p>
+<p>Anyone who has a long enough memory knows that this has happened before, but our parents hard times achieve a mythic quality and do little to affect how we act.</p>
+<p>The California Gold Country has experienced approximately 30-year cycles of speculation and real estate appreciation at least since the 1940&#x27;s.</p>
+<p>It is probably not coincidental that 30 years is generational, long enough for a young person to recognize short-term gain and take a financial risk.</p>
+<p>The individual circumstances vary, and there are as many different stories around land ownership there are land owners, but as long as our economic structure represents capital and ownership, regular crashes and corrections are to be expected. After WWII, there were huge disruptions in the local economy.</p>
+<p>The price of gold was standardized and the major mines had been closed during the war.</p>
+<p>Although many mines re-opened, production gradually declined, and real estate activity was sluggish.</p>
+<p>One of my Nevada City clients bought his house and lot in 1949 for $400.</p>
+<p>The same parcel resold two years ago for close to $400,000, but the rate of appreciation was anything but linear.</p>
+<p>There was a big price run-up along with general prosperity in California during the 1960&#x27;s, followed by a decade-long slump and falling land values.</p>
+<p>My memory of Nevada City in 1978 brings to mind many closed and empty buildings, peeling paint and minimal employment opportunities.</p>
+<p>The local economy at that time was still largely dependant on timber and small-scale mining and much of our surveying work was associated with these industries.</p>
+<p>Surveying was largely seasonal and the field guys needed something else to do in the winter. It looks like we&#x27;re back there again.</p>
+<p>Governor Schwarzenegger anticipates 2009 as being the year for a California real estate recovery (whatever that means), “We just have to wait until we grow our way out of the situation, and I think by next year, we will grow out of it,” Schwarzenegger said in an interview on NBC News program “Meet the Press,” but if history is any reflection on current trends,</p>
+<p>hard times take their time.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 15 June 2009 20:35</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="permaculture-2--collect-and-store-energy">
+  <div class="post-header">
+    <h2 class="post-title">Permaculture 2: Collect and Store Energy</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Sunday, 22 March 2009 18:51</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Take care of our old, take care of our young, make hay while the sun shines. - Greg Brown
+
+Permaculture and Feng Shui number 2 Collecting and storing energy - Recognizing energy sources and working with them is finding the sun, winding a spring, following a stream or catching the wind.</p>
+<p>There is energy in the moon coming up in the evening. Stored energy is hay or a good pond or a woodpile,</p>
+<p>Permaculturists would like to grow gardens everywhere and slow down flowing water so that it has a chance to percolate and infiltrate, reducing erosion and increasing soil moisture.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 26 March 2009 01:47</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="geomatics--feng-shui-and-permaculture-design">
+  <div class="post-header">
+    <h2 class="post-title">Geomatics, Feng Shui and Permaculture Design</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 19 March 2009 01:45</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Shovel Ride The modern dicipline of Geomatics covers a wide range of earth-related practices including; remote sensing, surveying, civil engineering</p>
+<p>and geodesy.</p>
+<p>What might be considered related branches of earth arts are the ancient Chinese art of feng shui and the more recent philosophy of permaculture.</p>
+<p>These combine the strictly scientific with social and intuitive inputs.</p>
+<p>Geomancy as described by feng shui texts exhibit some interesting convergences with permaculture principles despite different basic fundamentals and both arts are based on social and energetic values of</p>
+<p>conservation and renewal that can help guide our planning choices. Feng shui is an enormously complicated system, but at least one style recognizes Yin and Yang and the duality of concepts at the heart.</p>
+<p>Feng shui practitioners, as I understand it, place great importance on placing their feet on the ground and walking a site to sense the larger forces at work.</p>
+<p>Likewise, the first principle of permaculture is &quot;Observation and Interaction,&quot; requiring acute observation and intimate knowledge of a particular area.</p>
+<p>Permaculture and feng shui both, also dictate working from a greater pattern, understanding the connectedness and allowing the forces of wind, water and chi, to work with our human &quot;improvements&quot;. Both systems recognize exterior forces at work on any site.</p>
+<p>The Earth&#x27;s magnetic field, the cardinal directions in respect to celestial orientation and what the geomancers refer to as the &quot;dragon&quot; and &quot;tiger&quot; forces are macro influences always in effect.</p>
+<p>These are neither benificent or malicious, but can be observed and intuited from a prolonged and thoughtful on the ground interaction.</p>
+<p>Design choices can be made that will enhance different aspects of the existing site features and energies, and it is possible to engineer design solutions that create a nurturing, welcoming impression, or conversely, the harsh, forbidding and erosive forces can be employed, either inadvertantly or intentionally. As human beings, we intuitively understand the effects of harmonious balance of nature&#x27;s forces.</p>
+<p>We are also easily destroyed by the extremes of imbalance.</p>
+<p>Every site has unique resources.</p>
+<p>Imposing a canned or pre-conceived design on any site creates unnatural tension as the Earth attempts to reclaim its equilibrium, and the imposed structures inevitably shift to accommodate.</p>
+<p>Earth-tension most noticeably manifests as erosion and drainage problems, pollution or contamination and unaesthetic. Land development in this country has been driven largely by economic factors, and even the smallest-scale land use projects are rooted in the concept of land as a commodity and are financed by anticipation of eventual gain.</p>
+<p>As long as individuals can acquire title to property and transfer ownership this is not likely to change. However, more and more, the public agencies, our elected officials, and the duly enacted laws and regulation that we have placed upon ourselves to help ensure the public safety and well-being, are affecting land use.</p>
+<p>Land -use restrictions reflect a general desire to conserve and protect the resources</p>
+<p>that all of us depend on, clean air, clean water and other natural and cultural artifacts that affect our health and enjoyment. As resource managers, land-use restrictions are a good indication of present and community future values.</p>
+<p>Building restrictions reflect our Cultural values.</p>
+<p>They have always reflected a concern for public health and safety, but sustainablily and conservation are relatively new faces of the development codes.</p>
+<p>We should recognize that the codes are a clear statement of democratic value.</p>
+<p>The Heritage trees are protected because the public values them.</p>
+<p>This means that resources present on a project enhance the site value and should be respected accordingly.</p>
+<p>Good design begins with a good inventory and understanding of site features.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 12 April 2010 15:22</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="practical-rtk-surveying">
+  <div class="post-header">
+    <h2 class="post-title">Practical RTK Surveying</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 13 March 2009 01:53</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Learning reliable procedures for effective GPS surveying has taken me nearly as long as paying off my equipment, but with the advent of better software and additional satellites, including GLONASS,</p>
+<p>I am beginning to incorporate GPS into almost every survey.</p>
+<p>I still rely on total stations for deep canyons and forest ground, but on open sites I can collect boundary and topographic information accurately and efficiently using almost exclusively the GPS.. This month I make the 36&#x27;th and last, monthly payment on my Topcon XT and I&#x27;m finally starting to love it.</p>
+<p>It has been a somewhat stormy relationship, and the equipment is somewhat finicky and tempramental, but I think we are settling down to a long marriage.</p>
+<p>The software has improved in the last three years and the XT has finally become a reliable instrument.</p>
+<p>In my skinned-down office, I&#x27;ve been doing most of our field work by myself, and I enjoy carrying less and accomplishing more than I could with a two-man total-station crew. GPS also allows the user to collect real-world coordinates for our projects so that I can provide elevation and positional services. More and more I am post-processing the location of my base station and retaining the real-world elevation, latitude and longitude, regardless of whether the job requires this information. Here is a sort of check-list and procedural run through for effective GPS/Static/RTK data collection and staking, and some helpful hints. Make sure all batteries are charged,</p>
+<p>and collector and receiver memories are clear. Pre-calculate &amp; upload any local coordinate information needed At the project site, locate a suitable base station. This is usually the highest point in the project location, with as nearly unobstructed view of the heavens as possible.</p>
+<p>The station should also be away from buildings, tall fences or power lines.</p>
+<p>Another consideration is site security; I have frequently left the base station unattended in remote areas, but I am nervous about leaving it alone in a high-traffic area.</p>
+<p>These units are brightly colored, very portable and very expensive.</p>
+<p>In busy sites I like to leave a baby-sitter with the base station.</p>
+<p>OPUS currently requires a minimum of two hours to process a solution (15 minutes with rapid static), and still, longer occupations achieve better results.</p>
+<p>The base station simultaneously collects location information and transmits correction to the rover.</p>
+<p>If I want a check on the observed elevations, I will collect static information at two or more points and then include these stations in a level loop or closed traverse.</p>
+<p>That way I am able to compare post-processed elevations with relative elevations. For RTK, most collectors can vary the elevation mask and the duration of the the observations.</p>
+<p>I have not noticed significant increases in accuracy by increasing the observation times.</p>
+<p>I seem to achieve higher precision by taking multiple 3 or 5 second observations and averaging the results.</p>
+<p>This also allows me to examine and remove any suspicious results.</p>
+<p>Changing the elevation mask upwards or downward can sometimes help the rover obtain a fix when satellites are blinking in and out of trees or other objects, or too near the horizon. Sometimes there are sunspots, or a space storm, or another cosmic mystery and the rover loses a fix; when this happens you need to wait.</p>
+<p>The constellation resolves, GPS surveying requires a different kind of patience from traditional surveying, yelling at your chainman won&#x27;t achieve a satellite fix, and some locations are simply not suitable for GPS.</p>
+<p>In this case we will locate two stations where the RTK is reliable and shoot the point is with the total station.
+
+More on GPS Auto-level levelling</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 31 May 2010 18:59</div>
+    <div class="post-comments">Comments (1)</div>
+  </div>
+</article>
+<article class="blog-post" id="green-development">
+  <div class="post-header">
+    <h2 class="post-title">green development</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Sunday, 01 March 2009 00:00</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Land development in a greener world Recession means shifting from construction to maintenance.</p>
+<p>Because nobody is in much of a hurry to sell right now, we are being presented with the opportunity to improve our holdings, fill holes and stop leaks.</p>
+<p>With so many people in California, and such concentrated development, we are grappling with land-use issues that will affect us for generations to come.</p>
+<p>Very few areas of the state remain so isolated that development truly has a less-than significant impact on the local community and environment, and project planning needs to consider increasing the health of the community. I&#x27;m really excited by some of the Permaculture development ideas; including: water resources (sources, quantity, quality, recharging of ground supply, use and affect on downstream neighbors etc.) location of desirable natural resources other than water; aesthetic, ecologic or economic (trees, rock outcrops or minerals, species or habitat of concern suitability for proposed development with surrounding use and long-term planning goals Water is the beginning of any Permaculture site design, and it guides any grading or construction.</p>
+<p>Where does the water come from, how can it be slowed, retained, and encouraged to bring life to the site and percolate away through the underlying soils.</p>
+<p>Traditionally Civil grading plans allow for run-off, effeciently channeling rainfal or any other surface water towards the nearest creek through gutters, culverts and drains. Holding a drop of water primary in your mind and considering permeable and vegetable surfaces, less pavement and more garden,</p>
+<p>creates healthier design.l Several California Counties now have Heritage tree ordinances and I am beginning to see these affecting site design.</p>
+<p>Last week I was on a project near Folsom.</p>
+<p>There is a single oak, a 36 inch Blue Oak</p>
+<p>on the twenty acres of this site, and the tree and native soil under the dripline was preserved during the phase one development of the project.</p>
+<p>It isn&#x27;t much, but it is a haven.</p>
+<p>The circle of the sheltering oak was reinforced by circles in the parking lot and building design.</p>
+<p>While I was on site, gathering topo data for new construction, the oak tree was alive with birds, songbirds and raptors and corvids alike. If there are empty neighborhoods, we need to repopulate them.</p>
+<p>If we build new neighborhoods we should do it with the sense that people will live there, that we are creating living communities, and that we should maintain life and beauty.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 31 May 2010 19:03</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="evidence">
+  <div class="post-header">
+    <h2 class="post-title">Evidence</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Monday, 23 February 2009 17:25</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Partially healed blaze with scribing visibleThis is a classic ponderosa pine bearing tree.</p>
+<p>It is a hundred years old and growing down in the serpentine soils of the the lower western foothills.</p>
+<p>Precipitation in this area is low and the growth is extremely slow.</p>
+<p>It is possible to find century-old brush chopping from the original surveyors and to literally follow in their footsteps.</p>
+<p>Old mining debris and piles of boards, cans and other junk rust and decay into delicate senescence among the rock outcrops and uniquely adapted plants and animals of the region.</p>
+<p>In areas where the chaparral is undisturbed there are &quot;old growth&quot; manzanita trunks over a foot in diameter and the scattered pines grow and heal so slowly that the blazes remain open.</p>
+<p>Corner monuments are typically generous rock mounds.</p>
+<p>This tree was found in the course of a survey near Vulcan Rd. in the Deadman&#x27;s flat area (https://docs.co.nevada.ca.us/dsweb/Get/Document-484524/File-223627.pdf). Higher in the mountains, or in the valley, where vegetative growth is more rapid, bearing trees will heal more quickly and the scribing and scars are generally overgrown.</p>
+<p>Sometimes all an intrepid surveyor will find are the rotted stump holes from the original bearing trees.</p>
+<p>If you are lucky enough to salvage a few scraps of bark to confirm species, and the alignment of the stump holes matches the calls to the original corner it is sometimes possible to locate a scattered rock mound or replace the corner from the given GLO courses.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 23 February 2009 19:12</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="value">
+  <div class="post-header">
+    <h2 class="post-title">Value</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Monday, 16 February 2009 21:53</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>My son and I own a lot in Grass Valley.</p>
+<p>He lives in the little back house and rents out the front.</p>
+<p>Because of falling interest rates, the payment on our interest-only loan has recently dropped and we were discussing whether to make additional payments to principle or keep the cash.</p>
+<p>I don&#x27;t know if our different points of view reflect generational differences or changing times or personal philosophy, but I am sort of old school.</p>
+<p>I would like to pay off the loan as fast as possible and burn the mortgage.</p>
+<p>Jeff has a different perspective.</p>
+<p>He considers interest payment an expense and the property as an asset and I don&#x27;t know if actually paying off the property matters that much to him.</p>
+<p>At two hundred dollars a month principle, it would be a hundred years before we could pay off the lot, but still, time passes.</p>
+<p>When it comes down to it this is not really an economic decision except for the fact that we, like millions of others, are paying a hell of a lot of interest.</p>
+<p>The way I see it, that&#x27;s more money to banks and bankers.</p>
+<p>My European friends tell me that property tends to be so expensive there, that nobody expects to pay off their homes; they simply buy and sell equity.</p>
+<p>This is really not that different from feudal times when the aristocracy owned everything and after paying a tithe in crops or service the serfs got a place to live and another day in the fields.</p>
+<p>Can someone please explain to me again why it is so important to get banks lending again?</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 16 February 2009 21:54</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="my-father">
+  <div class="post-header">
+    <h2 class="post-title">My Father</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 06 February 2009 20:47</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>All my life my father&#x27;s said I&#x27;m a lucky man. I&#x27;m going to count my blessings every day, and Live it while I can.
+
+My father, my Aunt and my Uncle are going to celebrate April 28; 70 years of being in America.</p>
+<p>All of them are grateful to be alive and safe;</p>
+<p>child refugees from Germany gone homicidal.</p>
+<p>I&#x27;m glad they survived. Another spring.</p>
+<p>First violets are blooming in the garden.</p>
+<p>We&#x27;ve been getting a little rain, but every bit greens things up.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 16 February 2009 22:19</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="back-at-it">
+  <div class="post-header">
+    <h2 class="post-title">Back at it</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 16 January 2009 16:49</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>It’s already the middle of January. The holidays were good this year. With snow and rain and the business lull I had time to appreciate my family and my good fortune. One of my colleagues spoke of “returning to reality,” when he came back to work, but I like to think that reality is big enough to include all the disparate pieces of our lives. I want the places where I’m loved to be a big part of my reality. With most of my crew laid-off, there is plenty to do at the survey office. I have a backlog of old maps that need to be recorded; particularly in Placer County, where the map-checkers have had a field day with some of our submissions, wanting dashed lines instead of continuous lines and scrutinizing survey methodology. It does feel good to get these old projects complete even if it doesn’t provide any income. We are into a January thaw now, and as usual, when the rain stops the phone has started ringing again. I was providing wellhead elevations in Placerville yesterday and Jon and I are up to Camptonville today to run some property lines. We have a little flurry of small jobs going and are bidding on some larger projects for next summer that may or may not happen. Running a business of any kind is always a challenge and it definitely requires flexibility. I don’t believe that the economic issues facing California Survey Company are fundamentally any different than those faced by Bechtel or Halliburton or Citibank, except that the numbers are a lot smaller. Standing in line for money from Washington is a stupid idea all the way around unless it is actual payment for doing good work, restoration or beneficial public works or growing food. Americans should surely be buying something for all the money we are putting out now, at the very least, good home loans and good cars or public transportation. The truth is that the economy always fluctuates. Investments increase and decrease and people make money and lose money, but we are still here. I, for one am grateful for the quiet times, for the space to breathe and appreciate life, appreciate reality. There is still work to do, good work, that benefits ourselves and our children and our communities.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Monday, 23 February 2009 19:38</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+
+      </div>
+      <aside id="timeline"><h3>Timeline</h3>
+<div class="tl-year">
+<div class="tl-year-label">2011</div>
+<a class="tl-post" href="#driving-with-john"><span class="tl-date">Mar 19</span>Driving with John</a>
+<a class="tl-post" href="#john-o"><span class="tl-date">Mar 09</span>john O</a>
+<a class="tl-post" href="#who-owns-public-resources"><span class="tl-date">Jan 21</span>Who owns public resources?</a>
+<a class="tl-post" href="#a-bird-in-the-hand"><span class="tl-date">Jan 20</span>A bird in the hand</a>
+<a class="tl-post" href="#the-tyranny-of-fear"><span class="tl-date">Jan 15</span>The tyranny of fear</a>
+<a class="tl-post" href="#nevada-county-going-backwards"><span class="tl-date">Jan 09</span>Nevada County going backwa...</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2010</div>
+<a class="tl-post" href="#every-year-something-dies"><span class="tl-date">Oct 24</span>Every year something dies</a>
+<a class="tl-post" href="#observation-and-design"><span class="tl-date">Jun 19</span>observation and design</a>
+<a class="tl-post" href="#permaculture-booth"><span class="tl-date">May 31</span>Permaculture Booth</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 11</span>Another bee</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 08</span>Another Bee</a>
+<a class="tl-post" href="#afluence-and-ecological-ignorance"><span class="tl-date">Apr 24</span>Afluence and ecological ig...</a>
+<a class="tl-post" href="#season-s-dance"><span class="tl-date">Apr 21</span>Season&#x27;s dance</a>
+<a class="tl-post" href="#old-nevada-county-map-from-the-interwebs"><span class="tl-date">Apr 11</span>Old Nevada County Map from...</a>
+<a class="tl-post" href="#change"><span class="tl-date">Apr 10</span>Change</a>
+<a class="tl-post" href="#permaculture-certification"><span class="tl-date">Apr 06</span>Permaculture Certification</a>
+<a class="tl-post" href="#sticking-around"><span class="tl-date">Mar 09</span>sticking around</a>
+<a class="tl-post" href="#class-information"><span class="tl-date">Feb 21</span>Class information</a>
+<a class="tl-post" href="#jon-being-useful"><span class="tl-date">Jan 28</span>Jon being useful</a>
+<a class="tl-post" href="#happy-farmers"><span class="tl-date">Jan 27</span>Happy farmers</a>
+<a class="tl-post" href="#permaculture-site-plan"><span class="tl-date">Jan 26</span>Permaculture site plan</a>
+<a class="tl-post" href="#a-permanent-economy"><span class="tl-date">Jan 17</span>A permanent economy</a>
+<a class="tl-post" href="#survey-presentation"><span class="tl-date">Jan 13</span>Survey Presentation</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2009</div>
+<a class="tl-post" href="#california-map"><span class="tl-date">Dec 09</span>California Map</a>
+<a class="tl-post" href="#planning-and-sustainability"><span class="tl-date">Dec 04</span>planning and sustainability</a>
+<a class="tl-post" href="#mining-claims"><span class="tl-date">Dec 02</span>Mining Claims</a>
+<a class="tl-post" href="#bear-story"><span class="tl-date">Dec 01</span>Bear Story</a>
+<a class="tl-post" href="#odds-and-ends"><span class="tl-date">Nov 30</span>Odds and ends</a>
+<a class="tl-post" href="#fema-elevation-certificate"><span class="tl-date">Nov 11</span>FEMA Elevation Certificate</a>
+<a class="tl-post" href="#legacy"><span class="tl-date">Nov 06</span>Legacy</a>
+<a class="tl-post" href="#about-time"><span class="tl-date">Oct 02</span>About time</a>
+<a class="tl-post" href="#rain"><span class="tl-date">Jun 15</span>Rain</a>
+<a class="tl-post" href="#permaculture-2--collect-and-store-energy"><span class="tl-date">Mar 22</span>Permaculture 2: Collect an...</a>
+<a class="tl-post" href="#geomatics--feng-shui-and-permaculture-design"><span class="tl-date">Mar 19</span>Geomatics, Feng Shui and P...</a>
+<a class="tl-post" href="#practical-rtk-surveying"><span class="tl-date">Mar 13</span>Practical RTK Surveying</a>
+<a class="tl-post" href="#green-development"><span class="tl-date">Mar 01</span>green development</a>
+<a class="tl-post" href="#evidence"><span class="tl-date">Feb 23</span>Evidence</a>
+<a class="tl-post" href="#value"><span class="tl-date">Feb 16</span>Value</a>
+<a class="tl-post" href="#my-father"><span class="tl-date">Feb 06</span>My Father</a>
+<a class="tl-post" href="#back-at-it"><span class="tl-date">Jan 16</span>Back at it</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2008</div>
+<a class="tl-post" href="#fire-dancer"><span class="tl-date">Dec 28</span>Fire dancer</a>
+<a class="tl-post" href="#benchmark--books"><span class="tl-date">Dec 19</span>Benchmark &quot;Books&quot;</a>
+<a class="tl-post" href="#lay-off"><span class="tl-date">Dec 18</span>Lay-off</a>
+<a class="tl-post" href="#latitude"><span class="tl-date">Dec 13</span>Latitude</a>
+<a class="tl-post" href="#it-s-cool-to-be-green"><span class="tl-date">Dec 05</span>It&#x27;s Cool to be Green</a>
+<a class="tl-post" href="#blog-8"><span class="tl-date">Dec 04</span>Blog 8</a>
+<a class="tl-post" href="#blog-7"><span class="tl-date">Dec 03</span>Blog 7</a>
+<a class="tl-post" href="#blog-6"><span class="tl-date">Nov 27</span>Blog 6</a>
+<a class="tl-post" href="#entry-5"><span class="tl-date">Nov 27</span>Entry 5</a>
+<a class="tl-post" href="#entry-4"><span class="tl-date">Nov 27</span>Entry 4</a>
+<a class="tl-post" href="#entry-3"><span class="tl-date">Nov 27</span>Entry 3</a>
+<a class="tl-post" href="#entry-2"><span class="tl-date">Nov 27</span>Entry 2</a>
+<a class="tl-post" href="#entry-1"><span class="tl-date">Nov 12</span>Entry 1</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2004</div>
+<a class="tl-post" href="#who-we-were"><span class="tl-date">Jul 07</span>Who we were</a>
+</div>
+</aside>
+    </div>
+    <div id="footer">
+      Copyright &copy; 2013 California Survey Company. All Rights Reserved.<br>
+      Originally powered by Joomla! &mdash; Recreated with care.
+    </div>
+  </div>
+</body>
+</html>

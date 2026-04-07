@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A bird in the hand - California Survey Company</title>
+  <meta name="description" content="California Survey Co. Land Surveying and the Art of Surveying">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <style>
+:root {
+  --green-dark: #3b5e2b;
+  --green-mid: #5a8a3c;
+  --green-light: #8cb86b;
+  --green-pale: #e8f0e0;
+  --blue-dark: #1a3a5c;
+  --blue-bg: #d4e4f0;
+  --blue-light: #e8f0f8;
+  --text: #333;
+  --text-light: #666;
+  --white: #fff;
+  --border: #c0d0b0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green-dark: #8cb86b;
+    --green-mid: #6a9a4c;
+    --green-light: #3b5e2b;
+    --green-pale: #1a2a14;
+    --blue-dark: #a0c0e0;
+    --blue-bg: #0e1e2e;
+    --blue-light: #152535;
+    --text: #d8d8d0;
+    --text-light: #a0a098;
+    --white: #1a2418;
+    --border: #3a4a30;
+    --shadow: rgba(0,0,0,0.3);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--blue-bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--green-dark); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--green-mid); }
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 0 20px var(--shadow);
+  min-height: 100vh;
+}
+
+/* Header */
+#header {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  padding: 24px 30px;
+  border-bottom: 3px solid var(--green-light);
+}
+
+#header h1 {
+  font-size: 1.8em;
+  color: var(--white);
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+#header h1 a { color: var(--white); }
+#header h1 a:hover { text-decoration: none; opacity: 0.9; }
+
+#header .subtitle {
+  color: var(--green-pale);
+  font-size: 0.85em;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Navigation */
+#nav {
+  background: var(--green-pale);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+#nav a {
+  display: inline-block;
+  padding: 10px 16px;
+  color: var(--green-dark);
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-right: 1px solid var(--border);
+}
+
+#nav a:hover, #nav a.active {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  #nav a:hover, #nav a.active {
+    background: var(--green-mid);
+  }
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 8px 30px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.breadcrumb a { color: var(--text-light); }
+
+/* Content area */
+#content {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+#main-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-heading {
+  font-size: 1.5em;
+  color: var(--green-dark);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-pale);
+}
+
+/* Timeline sidebar */
+#timeline {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78em;
+  padding-right: 8px;
+}
+
+#timeline::-webkit-scrollbar { width: 4px; }
+#timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+#timeline h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-year {
+  margin-bottom: 12px;
+}
+
+.tl-year-label {
+  font-weight: bold;
+  color: var(--green-dark);
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  padding: 2px 0;
+}
+
+.tl-post {
+  display: block;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid var(--border);
+  color: var(--text-light);
+  line-height: 1.3;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tl-post:hover {
+  border-left-color: var(--green-mid);
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.tl-post .tl-date {
+  display: block;
+  font-size: 0.85em;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+/* Blog posts */
+.blog-post, .blog-post-summary {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-post:last-child, .blog-post-summary:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.3em;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.post-title a { color: var(--green-dark); }
+
+.post-meta {
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-meta .post-author {
+  margin-right: 16px;
+}
+
+.post-content {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin-bottom: 14px;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-image {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.post-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.post-preview {
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.read-more {
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--green-mid);
+}
+
+.post-footer {
+  margin-top: 16px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-updated {
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.post-comments {
+  color: var(--green-mid);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 2px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.pagination span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Footer */
+#footer {
+  background: var(--green-pale);
+  border-top: 1px solid var(--border);
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 0.75em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Year navigation */
+.year-nav {
+  margin-bottom: 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.year-nav a, .year-nav span {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.year-nav span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #content { flex-direction: column; }
+  #timeline {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  #header { padding: 18px 16px; }
+  #header h1 { font-size: 1.4em; }
+  #nav { padding: 0 8px; }
+  #nav a { padding: 8px 10px; font-size: 0.8em; }
+  #content { padding: 20px 16px; }
+  .page-heading { font-size: 1.2em; }
+  .post-title { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1><a href="index.html">California Survey Company</a></h1>
+      <div class="subtitle">Land Surveying and the Art of Surveying</div>
+    </div>
+    <div id="nav">
+      <a href="index.html">Home</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+<a href="#">The Community</a>
+<a href="#">Equipment &amp; Methodology</a>
+<a href="#">Links</a>
+<a href="index.html" class="active">Surveyor's Blog</a>
+
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="index.html">Surveyor's Blog</a> &rsaquo; A bird in the hand</div>
+    <div id="content">
+      <div id="main-col">
+        <a href="index.html" class="back-link">&larr; Back to all posts</a>
+<article class="blog-post" id="a-bird-in-the-hand">
+  <div class="post-header">
+    <h2 class="post-title">A bird in the hand</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 20 January 2011 21:51</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>This is a fledgling we found on a restoration project last spring. We all have to start somewhere</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 20 January 2011 22:21</div>
+    <div class="post-comments">Comments (1)</div>
+  </div>
+</article><div style="display:flex;justify-content:space-between;margin-top:24px;font-size:0.85em;font-family:Helvetica Neue,Arial,sans-serif;"><a href="the-tyranny-of-fear.html">&larr; The tyranny of fear</a><a href="who-owns-public-resources.html">Who owns public resources? &rarr;</a></div>
+      </div>
+      <aside id="timeline"><h3>Timeline</h3>
+<div class="tl-year">
+<div class="tl-year-label">2011</div>
+<a class="tl-post" href="#driving-with-john"><span class="tl-date">Mar 19</span>Driving with John</a>
+<a class="tl-post" href="#john-o"><span class="tl-date">Mar 09</span>john O</a>
+<a class="tl-post" href="#who-owns-public-resources"><span class="tl-date">Jan 21</span>Who owns public resources?</a>
+<a class="tl-post" href="#a-bird-in-the-hand"><span class="tl-date">Jan 20</span>A bird in the hand</a>
+<a class="tl-post" href="#the-tyranny-of-fear"><span class="tl-date">Jan 15</span>The tyranny of fear</a>
+<a class="tl-post" href="#nevada-county-going-backwards"><span class="tl-date">Jan 09</span>Nevada County going backwa...</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2010</div>
+<a class="tl-post" href="#every-year-something-dies"><span class="tl-date">Oct 24</span>Every year something dies</a>
+<a class="tl-post" href="#observation-and-design"><span class="tl-date">Jun 19</span>observation and design</a>
+<a class="tl-post" href="#permaculture-booth"><span class="tl-date">May 31</span>Permaculture Booth</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 11</span>Another bee</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 08</span>Another Bee</a>
+<a class="tl-post" href="#afluence-and-ecological-ignorance"><span class="tl-date">Apr 24</span>Afluence and ecological ig...</a>
+<a class="tl-post" href="#season-s-dance"><span class="tl-date">Apr 21</span>Season&#x27;s dance</a>
+<a class="tl-post" href="#old-nevada-county-map-from-the-interwebs"><span class="tl-date">Apr 11</span>Old Nevada County Map from...</a>
+<a class="tl-post" href="#change"><span class="tl-date">Apr 10</span>Change</a>
+<a class="tl-post" href="#permaculture-certification"><span class="tl-date">Apr 06</span>Permaculture Certification</a>
+<a class="tl-post" href="#sticking-around"><span class="tl-date">Mar 09</span>sticking around</a>
+<a class="tl-post" href="#class-information"><span class="tl-date">Feb 21</span>Class information</a>
+<a class="tl-post" href="#jon-being-useful"><span class="tl-date">Jan 28</span>Jon being useful</a>
+<a class="tl-post" href="#happy-farmers"><span class="tl-date">Jan 27</span>Happy farmers</a>
+<a class="tl-post" href="#permaculture-site-plan"><span class="tl-date">Jan 26</span>Permaculture site plan</a>
+<a class="tl-post" href="#a-permanent-economy"><span class="tl-date">Jan 17</span>A permanent economy</a>
+<a class="tl-post" href="#survey-presentation"><span class="tl-date">Jan 13</span>Survey Presentation</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2009</div>
+<a class="tl-post" href="#california-map"><span class="tl-date">Dec 09</span>California Map</a>
+<a class="tl-post" href="#planning-and-sustainability"><span class="tl-date">Dec 04</span>planning and sustainability</a>
+<a class="tl-post" href="#mining-claims"><span class="tl-date">Dec 02</span>Mining Claims</a>
+<a class="tl-post" href="#bear-story"><span class="tl-date">Dec 01</span>Bear Story</a>
+<a class="tl-post" href="#odds-and-ends"><span class="tl-date">Nov 30</span>Odds and ends</a>
+<a class="tl-post" href="#fema-elevation-certificate"><span class="tl-date">Nov 11</span>FEMA Elevation Certificate</a>
+<a class="tl-post" href="#legacy"><span class="tl-date">Nov 06</span>Legacy</a>
+<a class="tl-post" href="#about-time"><span class="tl-date">Oct 02</span>About time</a>
+<a class="tl-post" href="#rain"><span class="tl-date">Jun 15</span>Rain</a>
+<a class="tl-post" href="#permaculture-2--collect-and-store-energy"><span class="tl-date">Mar 22</span>Permaculture 2: Collect an...</a>
+<a class="tl-post" href="#geomatics--feng-shui-and-permaculture-design"><span class="tl-date">Mar 19</span>Geomatics, Feng Shui and P...</a>
+<a class="tl-post" href="#practical-rtk-surveying"><span class="tl-date">Mar 13</span>Practical RTK Surveying</a>
+<a class="tl-post" href="#green-development"><span class="tl-date">Mar 01</span>green development</a>
+<a class="tl-post" href="#evidence"><span class="tl-date">Feb 23</span>Evidence</a>
+<a class="tl-post" href="#value"><span class="tl-date">Feb 16</span>Value</a>
+<a class="tl-post" href="#my-father"><span class="tl-date">Feb 06</span>My Father</a>
+<a class="tl-post" href="#back-at-it"><span class="tl-date">Jan 16</span>Back at it</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2008</div>
+<a class="tl-post" href="#fire-dancer"><span class="tl-date">Dec 28</span>Fire dancer</a>
+<a class="tl-post" href="#benchmark--books"><span class="tl-date">Dec 19</span>Benchmark &quot;Books&quot;</a>
+<a class="tl-post" href="#lay-off"><span class="tl-date">Dec 18</span>Lay-off</a>
+<a class="tl-post" href="#latitude"><span class="tl-date">Dec 13</span>Latitude</a>
+<a class="tl-post" href="#it-s-cool-to-be-green"><span class="tl-date">Dec 05</span>It&#x27;s Cool to be Green</a>
+<a class="tl-post" href="#blog-8"><span class="tl-date">Dec 04</span>Blog 8</a>
+<a class="tl-post" href="#blog-7"><span class="tl-date">Dec 03</span>Blog 7</a>
+<a class="tl-post" href="#blog-6"><span class="tl-date">Nov 27</span>Blog 6</a>
+<a class="tl-post" href="#entry-5"><span class="tl-date">Nov 27</span>Entry 5</a>
+<a class="tl-post" href="#entry-4"><span class="tl-date">Nov 27</span>Entry 4</a>
+<a class="tl-post" href="#entry-3"><span class="tl-date">Nov 27</span>Entry 3</a>
+<a class="tl-post" href="#entry-2"><span class="tl-date">Nov 27</span>Entry 2</a>
+<a class="tl-post" href="#entry-1"><span class="tl-date">Nov 12</span>Entry 1</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2004</div>
+<a class="tl-post" href="#who-we-were"><span class="tl-date">Jul 07</span>Who we were</a>
+</div>
+</aside>
+    </div>
+    <div id="footer">
+      Copyright &copy; 2013 California Survey Company. All Rights Reserved.<br>
+      Originally powered by Joomla! &mdash; Recreated with care.
+    </div>
+  </div>
+</body>
+</html>

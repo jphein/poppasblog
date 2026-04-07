@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surveyor's Blog - 2008 - California Survey Company</title>
+  <meta name="description" content="California Survey Co. Land Surveying and the Art of Surveying">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <style>
+:root {
+  --green-dark: #3b5e2b;
+  --green-mid: #5a8a3c;
+  --green-light: #8cb86b;
+  --green-pale: #e8f0e0;
+  --blue-dark: #1a3a5c;
+  --blue-bg: #d4e4f0;
+  --blue-light: #e8f0f8;
+  --text: #333;
+  --text-light: #666;
+  --white: #fff;
+  --border: #c0d0b0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green-dark: #8cb86b;
+    --green-mid: #6a9a4c;
+    --green-light: #3b5e2b;
+    --green-pale: #1a2a14;
+    --blue-dark: #a0c0e0;
+    --blue-bg: #0e1e2e;
+    --blue-light: #152535;
+    --text: #d8d8d0;
+    --text-light: #a0a098;
+    --white: #1a2418;
+    --border: #3a4a30;
+    --shadow: rgba(0,0,0,0.3);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--blue-bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--green-dark); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--green-mid); }
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 0 20px var(--shadow);
+  min-height: 100vh;
+}
+
+/* Header */
+#header {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  padding: 24px 30px;
+  border-bottom: 3px solid var(--green-light);
+}
+
+#header h1 {
+  font-size: 1.8em;
+  color: var(--white);
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+#header h1 a { color: var(--white); }
+#header h1 a:hover { text-decoration: none; opacity: 0.9; }
+
+#header .subtitle {
+  color: var(--green-pale);
+  font-size: 0.85em;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Navigation */
+#nav {
+  background: var(--green-pale);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+#nav a {
+  display: inline-block;
+  padding: 10px 16px;
+  color: var(--green-dark);
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-right: 1px solid var(--border);
+}
+
+#nav a:hover, #nav a.active {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  #nav a:hover, #nav a.active {
+    background: var(--green-mid);
+  }
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 8px 30px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.breadcrumb a { color: var(--text-light); }
+
+/* Content area */
+#content {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+#main-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-heading {
+  font-size: 1.5em;
+  color: var(--green-dark);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-pale);
+}
+
+/* Timeline sidebar */
+#timeline {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78em;
+  padding-right: 8px;
+}
+
+#timeline::-webkit-scrollbar { width: 4px; }
+#timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+#timeline h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-year {
+  margin-bottom: 12px;
+}
+
+.tl-year-label {
+  font-weight: bold;
+  color: var(--green-dark);
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  padding: 2px 0;
+}
+
+.tl-post {
+  display: block;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid var(--border);
+  color: var(--text-light);
+  line-height: 1.3;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tl-post:hover {
+  border-left-color: var(--green-mid);
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.tl-post .tl-date {
+  display: block;
+  font-size: 0.85em;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+/* Blog posts */
+.blog-post, .blog-post-summary {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-post:last-child, .blog-post-summary:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.3em;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.post-title a { color: var(--green-dark); }
+
+.post-meta {
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-meta .post-author {
+  margin-right: 16px;
+}
+
+.post-content {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin-bottom: 14px;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-image {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.post-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.post-preview {
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.read-more {
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--green-mid);
+}
+
+.post-footer {
+  margin-top: 16px;
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.post-updated {
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.post-comments {
+  color: var(--green-mid);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 2px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.pagination span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Footer */
+#footer {
+  background: var(--green-pale);
+  border-top: 1px solid var(--border);
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 0.75em;
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Year navigation */
+.year-nav {
+  margin-bottom: 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+.year-nav a, .year-nav span {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.year-nav span.current {
+  background: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #content { flex-direction: column; }
+  #timeline {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  #header { padding: 18px 16px; }
+  #header h1 { font-size: 1.4em; }
+  #nav { padding: 0 8px; }
+  #nav a { padding: 8px 10px; font-size: 0.8em; }
+  #content { padding: 20px 16px; }
+  .page-heading { font-size: 1.2em; }
+  .post-title { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1><a href="index.html">California Survey Company</a></h1>
+      <div class="subtitle">Land Surveying and the Art of Surveying</div>
+    </div>
+    <div id="nav">
+      <a href="index.html">Home</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+<a href="#">The Community</a>
+<a href="#">Equipment &amp; Methodology</a>
+<a href="#">Links</a>
+<a href="index.html" class="active">Surveyor's Blog</a>
+
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Surveyor's Blog</div>
+    <div id="content">
+      <div id="main-col">
+        <h1 class="page-heading">Surveyor's Blog &mdash; 2008</h1>
+<div class="year-nav">Filter by year: <a href="index.html">All</a> <a href="year-2011.html">2011</a> <a href="year-2010.html">2010</a> <a href="year-2009.html">2009</a> <span class="current">2008</span> <a href="year-2004.html">2004</a> </div>
+<article class="blog-post" id="fire-dancer">
+  <div class="post-header">
+    <h2 class="post-title">Fire dancer</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Sunday, 28 December 2008 01:44</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>He lives in a car up the hill somewhere and his boots are scuffed and ragged He&#x27;s got a mom down south he aint seen in a year and a sleeping bag and a bottle of beer The local cops like to roust him out and throw him in the can because he&#x27;s always broke and he don&#x27;t like to work and they figure he&#x27;s a worthless man.
+
+BUT He&#x27;s a hell of a dude- He runs on green crude fire dances biodiesel when you catch him in the dark it&#x27;s a cataclysmic spark, whirling arc black burning mad road artist with the night time at his easel.
+
+If you catch him by day he don&#x27;t have too much to say Probably ask for a buck or a light never know where he&#x27;s been- he&#x27;s covered with dirt, got rips in his shirt and he smells like kerosene.
+
+BUT He knows his grains got flames in his veins and he brews up bathtub gas he runs his truck on organic syntho muck and he fuels up at the Panda Express.
+
+He&#x27;s the kind of guy- he don&#x27;t look you in the eye and you don&#x27;t want him anywhere near your daughter he eats beans and ham, mostly out of a can and he&#x27;s not that fond of water.
+
+On a hot afternoon in July or June you might find him in the back of the Mineshaft He&#x27;s tall bipolar, he&#x27;s rolling Buglar like a dusky child that&#x27;s got lost and wild, when the barmaid smiled. Just out of jail, he&#x27;s lining up the ale and he&#x27;s dreamin&#x27; about alien landing craft.
+
+But when the daylight fails and he fills his sails and he breaks out his chains and his poi and his hips start swinging and the links start singing and the flack starts flinging and the pong starts pinging and the babes start clinging and the shit starts winging well - you can tell that he&#x27;s a hell of a boy
+
+yeah- you can tell that he&#x27;s a hell of a boy</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Sunday, 28 December 2008 02:08</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="benchmark--books">
+  <div class="post-header">
+    <h2 class="post-title">Benchmark &quot;Books&quot;</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 19 December 2008 21:26</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>The new Idaho-Maryland roundabout destroyed the old U.S.G.S. Benchmark V213 dated 1934.</p>
+<p>The cap was well hidden under a pile of earth and rocks and had not been recovered either by N.G.S. in 1949 or by Caltrans in 2004.</p>
+<p>The City engineer was recently asking about remonumentation and the value of having the municipality maintain benchmark records. From what I&#x27;ve seen locally anyway, benchmark information varies widely between the agencies.</p>
+<p>Grass Valley conducted an aerial survey in 1980 and set some semi-permanent benchmarks at that time presumably with the idea of coordinating various public works projects onto a common vertical datum tied to U.S.G.S benchmarks.</p>
+<p>Most of the points set for control of this project were rebars, RR spikes or nails set in pavement and are getting hard to find and may have shifted.</p>
+<p>As far as I know, this is the only effort the City has made to establish a vertical control network.</p>
+<p>I have heard this referred to as the &quot;Grass Valley Datum,&quot; but I don&#x27;t know if it has been officially adopted as such.</p>
+<p>Benchmarks set and maintained by NGS are listed here: http://www.ngs.noaa.gov/cgi-bin/ds_radius.prl Data sheets at these points are useful and contain recovery information as well as Geodetic.</p>
+<p>There was also a FEMA study along Wolf Creek, establishing base flood information.</p>
+<p>Almost all of the benchmarks set during the course of this study have been destroyed, with the exception of the U.S.G.S.marker in the old Post Office building (now lawyer&#x27;s offices). As far as the Nevada County and other public agencies that I am familiar with, including the City of Auburn, the City of Rocklin and the town of Loomis, are concerned, there are lists or binders in their offices of varying degrees of antiquity that show benchmark locations and elevations.</p>
+<p>As far as I know these were prepared quite some time ago and have not been maintained recently.</p>
+<p>There are no ordinances requiring the upkeep of these lists.</p>
+<p>I have discussed this with Tom Martin, the County Surveyor, and his feeling is that since the advent of GPS, absolute vertical elevations are much easier to obtain and they have gotten away from requiring ties to benchmarks on improvement plans.</p>
+<p>I believe that the benchmarks are still useful as checks and ties for the GPS observations, but maintaining a dense vertical control network may be more expensive than establishing tight GPS control on an as-needed basis.</p>
+  </div>
+  <div class="post-footer">
+    
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="lay-off">
+  <div class="post-header">
+    <h2 class="post-title">Lay-off</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 18 December 2008 06:11</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>This week I had to lay-off all my staff except for Jon, the office manager, and I cut him down to half time.</p>
+<p>Between the recession and the holidays and the bad weather, the work has trickled off to barely anything, and a lot of it is review and legal descriptions and entitlement stuff that I can do by myself.</p>
+<p>It&#x27;s sad to cut people off, but I only have to remember back a few years to when I always expected the shop to close up for winter; especially field crew.</p>
+<p>We&#x27;ve just been so busy that the last few winters we worked every day that the weather allowed and that kept office staff busier also.</p>
+<p>I haven&#x27;t touched an instrument in a while though, and I felt a little rusty turning angles today.</p>
+<p>This office is right in there with the rest of the country,</p>
+<p>fewer clients and people trying to bargain us down on price.</p>
+<p>It isn&#x27;t the end.</p>
+<p>I figure people are not going to stop fighting with their neighbors or needing planning and mapping services entirely, but there is just a general slow-down and we&#x27;re a part of it.</p>
+<p>I feel bad for the guys who have been working hard and have gotten good at their jobs and are now looking at no rent money for January.</p>
+  </div>
+  <div class="post-footer">
+    
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="latitude">
+  <div class="post-header">
+    <h2 class="post-title">Latitude</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Saturday, 13 December 2008 07:34</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>What&#x27;s your latitude?
+
+The utilization of GPS technology allows survey projects to be more readily interfaced into standardized positioning systems, and theoretically, as more and more objects are located by geodetic coordinates, they can be spatially referenced and graphically delineated in their respective positions.</p>
+<p>This has allowed the creation of GIS databases that store location information relevant to hundreds of disciplines.</p>
+<p>GIS has valuable applications for planning and land use, for resource conservation and development, for navigation and fleet management and for product tracking, etc.</p>
+<p>The list is endless.
+
+Because Latitude and Longitude represent spherical coordinates, this geodetic system has the ability to describe the location of points on a globe irrespective of the size of the sphere.</p>
+<p>That is, Lat. 39d North, Long. 121W describes the same point on a 22 inch globe, in relation to its Equator and Prime Meridian, as it does on the actual surface of the earth.</p>
+<p>Therefore it is necessary to assume a model with a given diameter in order to determine relative distances between given points.</p>
+<p>Most boundary surveys and engineering projects are based on plane geometry, assuming a flat surface and assigning Cartesian coordinates (X,Y,&amp;Z;) for distance and elevations.</p>
+<p>This presents some conversion difficulties when assigning geodetic locations to plane-survey derived points.
+
+Often, land managers, utility companies or other agencies would like to tie their existing GIS or local survey control into an earth-based geometry, or survey data has been collected with GPS receivers and is stored in geodetic format, in which case an adjustment must be made in order to determine inverse relationships between points.</p>
+<p>It is important to understand the relationship of absolute (earth-centered) and relative (local positioning) in order to provide meaningful data. The State Plane coordinate system is useful transforming plane geometry into Lat/Long and vice versa.</p>
+<p>There is a direct correlation between these systems and there are a multitude of programs for conducting these transformations.</p>
+<p>The most important thing to remember when translating local coordinates to the state plane system is that ground distances inversed from local coordinates need to be scaled appropriately to compensate for the planar to arc, (the combined factor - projection and geoid correction) before the transformation.</p>
+<p>The scale factor is close to one, but over distances of several miles it makes a significant difference.</p>
+<p>If ground distances are held for the entire project.</p>
+<p>I will note the insertion point on the control diagram because it is only at this point that LAT/LONG will be correct. For determining real-world positions, we either tie benchmarks with known positions into our survey control, or use static GPS data collected and then corrected through the NGS OPUS routine.</p>
+<p>This service is provided to allow GPS users access to continuously operating reference stations at known locations.</p>
+<p>Simultaneously operating data collectors allow OPUS to compare our information with satellite vectors from distant stations resulting in long baselines and accurate positioning.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Saturday, 13 December 2008 08:37</div>
+    <div class="post-comments">Comments (1)</div>
+  </div>
+</article>
+<article class="blog-post" id="it-s-cool-to-be-green">
+  <div class="post-header">
+    <h2 class="post-title">It&#x27;s Cool to be Green</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Friday, 05 December 2008 01:43</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p></p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 01 January 2009 00:39</div>
+    <div class="post-comments">Comments (1)</div>
+  </div>
+</article>
+<article class="blog-post" id="blog-8">
+  <div class="post-header">
+    <h2 class="post-title">Blog 8</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 04 December 2008 17:08</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Easements 2 The second easement suit illustrates once again the unfortunate results of poorly defined documentation.</p>
+<p>The possibilities of easement creation and elimination are endless.</p>
+<p>Typically, when neighbors are getting along there are no problems, but</p>
+<p>all too often a relatively minor issue, a Chevy lawn ornament or a Peace and Freedom Party campaign billboard, becomes the first link in a chain that leads to disputes over access and and easements. Of course I am normally retained by one of the diputants, so I only get a subjective perspective on who did what, but as a surveyor.</p>
+<p>I try to ignore the history and clarify the physical aspects and the specific affect as well as the intent of any pertinant documentation. In this case.</p>
+<p>The neighbors, Who I will refer to as G and W, are in dipute over an existing driveway that crosses the W property and then branches to provide access to the G lot.</p>
+<p>G purchased their lot in 1995 and at that time their deed included easement access across the neighboring parcel, specifically describing an area that was substantially the same as the existing driveway.</p>
+<p>When W. acquired their lot in 2001, they were concerned about a fence encroachment in the easement area and prepared two documents for the purpose of &quot;clarifying the rights of the parties with respect to the easement.&quot;</p>
+<p>These documents included a quit-claim deed which effectively relinquished G&#x27;s right to the easement, and an Easement deed to be recorded concurrently that granted access to the same described area.</p>
+<p>The easement deed also included language specifying use of the area of W&#x27;s property enclosed by the fence, and included a termination date 5 years in the future. The 2001 agreement was a bad deal for G.</p>
+<p>It specifically did allow the fence encroachment to continue for 5 years and the area within the fence to be used for landscaping purposes, but after the termination date, all easement and encroachment rights were relinquished and the fence was subject to removal.</p>
+<p>G. says that he signed the agreement on a Sunday afternoon, at the request of the real estate agent.</p>
+<p>He believed that he was facilitating the sale for the previous landowner, an elderly woman with whom he had always had amicable relations and that he barely looked at it.</p>
+<p>In 2006, when W. invoked the termination clause, G offered to purchase the easement and land area within his fence, but after failing to negotiate a purchase agreement the affair has ended up in court.</p>
+<p>Trial date scheduled for next Monday.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 04 December 2008 20:37</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="blog-7">
+  <div class="post-header">
+    <h2 class="post-title">Blog 7</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Wednesday, 03 December 2008 00:00</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Easements: I am currently involved in two separate legal cases involving access easements. Easements are some of the most frequently disputed land rights. They are generally unregulated, are often poorly defined both in scope and location, and may be undocumented and unrecorded. Almost all properties are affected by one type of easement or another and a good understanding of these effects is essential when considering land use. Although easements can be created for a variety of purposes, I will focus specifically on the various features of access easements as I have been studying these for the upcoming lawsuits. Easements can be created in several ways. According to the Miller and Star California Real Estate Digest, these are: (1) and express grant, (2) an express reservation, (3) an implied grant, (4) an implied reservation, (5) necessity, (6) prescription, (7) a recorded covenant, (8) dedication, (9) condemnation, (10) estoppel, (11) balancing of hardship, of these, only numbers 1,2,7,8 and 9 exist without adjudication to perfect. An access easement is a legal right. In the absence of specific language access implies unrestricted ingress and egress to the extent that the width of the easement allows. The right may not include the placement of utilities, or other uses not associated with access. If there is no express creation and an easement location is determined to be an existing road or path, the width of the easement is generally the width of the traveled way, exclusive of cuts and fill slopes or other supporting structures. The first case I am considering involves the J&amp;R; lot. This parcel has access to a public road, but the outstanding building site is physically accessed by a narrow dirt road along the top of a steep ridge. East of the ridge top the property drops off abruptly into grades on which construction is unfeasible. Access easements do exist to link this property with public roads along the ridge top. The dirt road was passable and used from time to time by the owners of J&amp;R; until they discovered their neighbors building a house across the road over which they believed they had easement rights. In the course of attempting to stop the construction, research into existing deeds revealed that although the road has existed for many years, the access easement location is poorly defined, including distances such as approximately 220’ and approximately 300’ and bearings such as southwesterly, northerly, etc. In some areas the existing ridge top road coincides with the easements but in the area of the neighbor’s new house, the recorded easements do not appear to coincide with, or make reference to, existing roads. Issues regarding this dispute require careful consideration of all documents that may clarify the location or intent of the recorded easements and my conclusions after this consideration are as follows: Previous grantors intended to grant an access easement to the J &amp; R lot. Although the precise location of the intended easement is not determinable of record, there is sufficient clarity to ascertain that the easements described were meant to provide access to the ridge top portion of the lot. The owners of J &amp; R acquired their property believing that the existing road was in the location described in the easement deed. This may constitute an implied easement. The case for a prescriptive easement is not well supported because J&amp; R did not have a residence on the lot and did not use the road on a regular (daily) basis. The best interpretation of the deeded description would place the J &amp; R access easement easterly of the existing road (and new house). It is certainly possible that the previous owners recognized the ridge top as the preferred building site and intended to relocate the road to the east, but it is unlikely that anyone would grant (or accept) an access easement through an area of excessive slope. There is currently a house in the middle of the existing road and this area is no longer realistically available for traffic. An engineer’s evaluation of potential driveway construction shows that it is possible to relocate the road to the east of the former road and existing house, although not in the “approximate location” as described by deed. J &amp; R are suing to obtain validation of the expressly granted easement and verification of the easement location as proposed by the engineer. This is a picture of the proposed driveway. Red lines indicate the approximate easement location as described per deed. The proposed driveway location is indicated in yellow highlighter. access easements</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Sunday, 28 December 2008 22:45</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="blog-6">
+  <div class="post-header">
+    <h2 class="post-title">Blog 6</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 27 November 2008 04:58</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>I just updated my blog, now you can subscribe to a feed if you know what a feed is.</p>
+<p>Mostly I think it means chicken feed.</p>
+<p>But thank you to all the bright, young, innovative, binary-thinking folks out there who are able to streamline their lives and solve so many problems.</p>
+<p>I know I&#x27;ve spent years cranking angles and doing other jobs that don&#x27;t even exist any more. You have a lot of work ahead, problems that need solving.</p>
+<p>When I think back to the hours I spent patiently hand-lettering pages of certificates or chasing down transposition errors in page after page of field notes, I realize that new skills are always being created.</p>
+<p>It was work that has become almost entirely automated but work that I enjoyed; when drafting required pens and calculations were made with pencils and trig tables and then the rapidly-changing series of calculating devices that finally evolved into the data-collection and computation programs that now exist.</p>
+<p>There has been an evolution in thinking also.</p>
+<p>My brain works mostly in circles and random untidy associations, rather than the subdividing fission that fits so compatibly with computer architecture. Thanksgiving and rain.</p>
+<p>Field crew out measuring fences and driveway in Grass Valley</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 27 November 2008 09:47</div>
+    <div class="post-comments">Comments (2)</div>
+  </div>
+</article>
+<article class="blog-post" id="entry-5">
+  <div class="post-header">
+    <h2 class="post-title">Entry 5</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 27 November 2008 04:51</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Ziggy and Earthworks starting December 1st. to rip the hay field for Honey in the heart; Willow&#x27;s farm
+
+Elevations certificates for monitoring wells at Lincoln and Long&#x27;s lot on Monday. The State standards regarding these monitoring wells require absolute elevations to the nearest 0.01&#x27;. Although our GPS receivers with redundant readings and careful procedure will give us accuracy close to that, I was wondering what was the purpose of that kind of requirement. Steve Baker, our local &quot;Hydro-head&quot; explained the need for accurate wellhead elevations in order to develop sub-surface water flow models. The sub-surface water tends to follow the contours of the ground surface, so in areas where there is a lot of topographic variation, the hundredth of a foot might not be so important, but in flat areas, just as with surface drainage patterns, the direction of subsurface flow is harder to determine.</p>
+<p>By measuring the invert elevation to the water in a scattering of wells you can map the invisible underground topography of the aquifer.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 27 November 2008 09:56</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="entry-4">
+  <div class="post-header">
+    <h2 class="post-title">Entry 4</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 27 November 2008 04:50</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>I just learned about videos. This is an amazing feat video.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 27 November 2008 04:58</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="entry-3">
+  <div class="post-header">
+    <h2 class="post-title">Entry 3</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 27 November 2008 04:47</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>The coop is about half-framed. We had a little surveying work to do the past week although things are really slow. Glen and Gabe have been running a traverse for a 150 Acre, 4-parcel Lot line adjustment which kept them busy this week, but business is down about 30% from last year and we are a little slower than feels comfortable. This does give me time to work on some of my own projects for a change. My daughter is planting an acre of vegetables on an old hayfield below the house. The ground needs to be ripped and tilled, we need to build an eight-foot tall deer fence and run water pipe down from the irrigation ditch. A lot of work, but Willow is an intrepid farmer and it will be a beautiful little farm. Clay soil; we tried digging some test pits in September and the ground was so hard we could hardly dent it, but since it has rained the earth has opened up nicely and I think it will cultivate well.</p>
+  </div>
+  <div class="post-footer">
+    
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="entry-2">
+  <div class="post-header">
+    <h2 class="post-title">Entry 2</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Thursday, 27 November 2008 04:45</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Pretty slow at the survey office, field crew working on a Record of survey and reversion to acreage in town. An old Grass Valley house with nice little walls, memorials and rockwork all over the two lots. I got a chicken permit from the City of Grass Valley that will allow me to build a chicken coop out back. There is enough noise, pavement and traffic in town to keep the coyotes and bears away, and I figure the birds will be safer here than out at my house. There was some concern from the City planner about roosters making noise, but I promised to eat any birds that got too loud. I ended up being permitted for twenty-five hens and one rooster. I found an old frosted glass window at the salvage store to let a little light into the coop. The window came originally from Mt. St. Mary&#x27;s orphanage and is supposed to be hand-blown German glass. I don&#x27;t think the chickens will care too much Here is the framing plan and materials list: chicken palace plan framing plan for the chicken coop</p>
+  </div>
+  <div class="post-footer">
+    
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+<article class="blog-post" id="entry-1">
+  <div class="post-header">
+    <h2 class="post-title">Entry 1</h2>
+    <div class="post-meta">
+      <span class="post-author">Written by stephen</span>
+      <span class="post-date">Wednesday, 12 November 2008 17:43</span>
+    </div>
+  </div>
+  <div class="post-content">
+    
+    <p>Despite the vagaries of the real estate market, owning property shouldn&#x27;t be considered as a short-term investment, and the principles of sustainability require us to look beyond the dollar returns that we may or may not achieve in our lifetimes. The earth was here a long time before any of us and it will be here for many years after we pass on. Ownership should be viewed as accepting a caretaking opportunity and an investment for our children; everybody&#x27;s children. If we are able to provide good homes or improve the air, water or quality of the soil on the piece of ground in our trust, than we have increased our own value as human beings contributing to the economic, ecologic and biological systems that create world community. Of course there is a lot of disagreement about what constitutes an improvement. My choices favor nurturing over toxic; diversity over uniformity and unpaved over concrete. All the flattest, best ground in California has been dedicated to the Car. Agency permits for any development project require automobile access and parking. This generally requires that the ground most suitable for easy access for old and young humans, gardens, meadows, recreation etc, becomes reserved for roads and parking lots. You can drive anywhere in this state, easily, but many farms, sanctuaries and wild places have been sacrificed for parking and transportation.</p>
+  </div>
+  <div class="post-footer">
+    <div class="post-updated">Last Updated on Thursday, 27 November 2008 04:41</div>
+    <div class="post-comments">Add your comment</div>
+  </div>
+</article>
+
+      </div>
+      <aside id="timeline"><h3>Timeline</h3>
+<div class="tl-year">
+<div class="tl-year-label">2011</div>
+<a class="tl-post" href="#driving-with-john"><span class="tl-date">Mar 19</span>Driving with John</a>
+<a class="tl-post" href="#john-o"><span class="tl-date">Mar 09</span>john O</a>
+<a class="tl-post" href="#who-owns-public-resources"><span class="tl-date">Jan 21</span>Who owns public resources?</a>
+<a class="tl-post" href="#a-bird-in-the-hand"><span class="tl-date">Jan 20</span>A bird in the hand</a>
+<a class="tl-post" href="#the-tyranny-of-fear"><span class="tl-date">Jan 15</span>The tyranny of fear</a>
+<a class="tl-post" href="#nevada-county-going-backwards"><span class="tl-date">Jan 09</span>Nevada County going backwa...</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2010</div>
+<a class="tl-post" href="#every-year-something-dies"><span class="tl-date">Oct 24</span>Every year something dies</a>
+<a class="tl-post" href="#observation-and-design"><span class="tl-date">Jun 19</span>observation and design</a>
+<a class="tl-post" href="#permaculture-booth"><span class="tl-date">May 31</span>Permaculture Booth</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 11</span>Another bee</a>
+<a class="tl-post" href="#another-bee"><span class="tl-date">May 08</span>Another Bee</a>
+<a class="tl-post" href="#afluence-and-ecological-ignorance"><span class="tl-date">Apr 24</span>Afluence and ecological ig...</a>
+<a class="tl-post" href="#season-s-dance"><span class="tl-date">Apr 21</span>Season&#x27;s dance</a>
+<a class="tl-post" href="#old-nevada-county-map-from-the-interwebs"><span class="tl-date">Apr 11</span>Old Nevada County Map from...</a>
+<a class="tl-post" href="#change"><span class="tl-date">Apr 10</span>Change</a>
+<a class="tl-post" href="#permaculture-certification"><span class="tl-date">Apr 06</span>Permaculture Certification</a>
+<a class="tl-post" href="#sticking-around"><span class="tl-date">Mar 09</span>sticking around</a>
+<a class="tl-post" href="#class-information"><span class="tl-date">Feb 21</span>Class information</a>
+<a class="tl-post" href="#jon-being-useful"><span class="tl-date">Jan 28</span>Jon being useful</a>
+<a class="tl-post" href="#happy-farmers"><span class="tl-date">Jan 27</span>Happy farmers</a>
+<a class="tl-post" href="#permaculture-site-plan"><span class="tl-date">Jan 26</span>Permaculture site plan</a>
+<a class="tl-post" href="#a-permanent-economy"><span class="tl-date">Jan 17</span>A permanent economy</a>
+<a class="tl-post" href="#survey-presentation"><span class="tl-date">Jan 13</span>Survey Presentation</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2009</div>
+<a class="tl-post" href="#california-map"><span class="tl-date">Dec 09</span>California Map</a>
+<a class="tl-post" href="#planning-and-sustainability"><span class="tl-date">Dec 04</span>planning and sustainability</a>
+<a class="tl-post" href="#mining-claims"><span class="tl-date">Dec 02</span>Mining Claims</a>
+<a class="tl-post" href="#bear-story"><span class="tl-date">Dec 01</span>Bear Story</a>
+<a class="tl-post" href="#odds-and-ends"><span class="tl-date">Nov 30</span>Odds and ends</a>
+<a class="tl-post" href="#fema-elevation-certificate"><span class="tl-date">Nov 11</span>FEMA Elevation Certificate</a>
+<a class="tl-post" href="#legacy"><span class="tl-date">Nov 06</span>Legacy</a>
+<a class="tl-post" href="#about-time"><span class="tl-date">Oct 02</span>About time</a>
+<a class="tl-post" href="#rain"><span class="tl-date">Jun 15</span>Rain</a>
+<a class="tl-post" href="#permaculture-2--collect-and-store-energy"><span class="tl-date">Mar 22</span>Permaculture 2: Collect an...</a>
+<a class="tl-post" href="#geomatics--feng-shui-and-permaculture-design"><span class="tl-date">Mar 19</span>Geomatics, Feng Shui and P...</a>
+<a class="tl-post" href="#practical-rtk-surveying"><span class="tl-date">Mar 13</span>Practical RTK Surveying</a>
+<a class="tl-post" href="#green-development"><span class="tl-date">Mar 01</span>green development</a>
+<a class="tl-post" href="#evidence"><span class="tl-date">Feb 23</span>Evidence</a>
+<a class="tl-post" href="#value"><span class="tl-date">Feb 16</span>Value</a>
+<a class="tl-post" href="#my-father"><span class="tl-date">Feb 06</span>My Father</a>
+<a class="tl-post" href="#back-at-it"><span class="tl-date">Jan 16</span>Back at it</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2008</div>
+<a class="tl-post" href="#fire-dancer"><span class="tl-date">Dec 28</span>Fire dancer</a>
+<a class="tl-post" href="#benchmark--books"><span class="tl-date">Dec 19</span>Benchmark &quot;Books&quot;</a>
+<a class="tl-post" href="#lay-off"><span class="tl-date">Dec 18</span>Lay-off</a>
+<a class="tl-post" href="#latitude"><span class="tl-date">Dec 13</span>Latitude</a>
+<a class="tl-post" href="#it-s-cool-to-be-green"><span class="tl-date">Dec 05</span>It&#x27;s Cool to be Green</a>
+<a class="tl-post" href="#blog-8"><span class="tl-date">Dec 04</span>Blog 8</a>
+<a class="tl-post" href="#blog-7"><span class="tl-date">Dec 03</span>Blog 7</a>
+<a class="tl-post" href="#blog-6"><span class="tl-date">Nov 27</span>Blog 6</a>
+<a class="tl-post" href="#entry-5"><span class="tl-date">Nov 27</span>Entry 5</a>
+<a class="tl-post" href="#entry-4"><span class="tl-date">Nov 27</span>Entry 4</a>
+<a class="tl-post" href="#entry-3"><span class="tl-date">Nov 27</span>Entry 3</a>
+<a class="tl-post" href="#entry-2"><span class="tl-date">Nov 27</span>Entry 2</a>
+<a class="tl-post" href="#entry-1"><span class="tl-date">Nov 12</span>Entry 1</a>
+</div>
+<div class="tl-year">
+<div class="tl-year-label">2004</div>
+<a class="tl-post" href="#who-we-were"><span class="tl-date">Jul 07</span>Who we were</a>
+</div>
+</aside>
+    </div>
+    <div id="footer">
+      Copyright &copy; 2013 California Survey Company. All Rights Reserved.<br>
+      Originally powered by Joomla! &mdash; Recreated with care.
+    </div>
+  </div>
+</body>
+</html>
